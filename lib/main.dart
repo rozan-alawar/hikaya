@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'حكاية',
       debugShowCheckedModeBanner: false,
-     
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     );
