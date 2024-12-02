@@ -23,3 +23,66 @@ plugins {
 }
 
 include ":app"
+
+
+//*// 1. Update android/build.gradle
+//// Find the ext.java section and update it:
+//ext {
+//    javaVersion = JavaVersion.VERSION_17  // Update from previous version (e.g. VERSION_11)
+//}
+//
+//// 2. Update android/app/build.gradle
+//android {
+//    compileSdkVersion 34  // Update if needed
+//
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_17
+//        targetCompatibility JavaVersion.VERSION_17
+//    }
+//
+//    // If using Kotlin, add these lines
+//    kotlinOptions {
+//        jvmTarget = '17'
+//    }
+//}
+//
+//// 3. Update gradle-wrapper.properties (android/gradle/wrapper/gradle-wrapper.properties)
+//distributionUrl=https\://services.gradle.org/distributions/gradle-8.3-all.zip  // Update to compatible Gradle version
+//
+//// 4. Optional: Update android/app/src/main/AndroidManifest.xml
+//// Add Java 17 compile options if needed:
+//<application
+//    android:compileSdkVersion="34"
+//    android:targetSdkVersion="34"
+//    ... >
+//</application>// 1. Update android/build.gradle
+//// Find the ext.java section and update it:
+//ext {
+//    javaVersion = JavaVersion.VERSION_17  // Update from previous version (e.g. VERSION_11)
+//}
+//
+//// 2. Update android/app/build.gradle
+//android {
+//    compileSdkVersion 34  // Update if needed
+//
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_17
+//        targetCompatibility JavaVersion.VERSION_17
+//    }
+//
+//    // If using Kotlin, add these lines
+//    kotlinOptions {
+//        jvmTarget = '17'
+//    }
+//}
+//
+//// 3. Update gradle-wrapper.properties (android/gradle/wrapper/gradle-wrapper.properties)
+//distributionUrl=https\://services.gradle.org/distributions/gradle-8.3-all.zip  // Update to compatible Gradle version
+//
+//// 4. Optional: Update android/app/src/main/AndroidManifest.xml
+//// Add Java 17 compile options if needed:
+//<application
+//    android:compileSdkVersion="34"
+//    android:targetSdkVersion="34"
+//    ... >
+//</application>
