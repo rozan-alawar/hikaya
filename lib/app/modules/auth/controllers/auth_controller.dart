@@ -60,4 +60,27 @@ class AuthController extends GetxController {
     }
   }
 
+
+  Future<void> forgotPassword({required String email}) async {
+    try {
+      isLoading.value = true;
+      // Implement your forgot password logic here
+      // await Future.delayed(const Duration(seconds: 2)); // Simulate API call
+      Get.snackbar(
+        'نجاح',
+        'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      Get.back(); // Return to login screen
+    } catch (e) {
+      Get.snackbar(
+        'خطأ',
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
 }

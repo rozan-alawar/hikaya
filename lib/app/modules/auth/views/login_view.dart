@@ -45,6 +45,7 @@ class LoginView extends GetView<AuthController> {
                   ),
                   const SizedBox(height: 32),
                   CustomTextField(
+                    hintText: 'البريد الإلكتروني',
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {

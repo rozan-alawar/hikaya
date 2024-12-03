@@ -5,14 +5,14 @@ abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
   static const AUTH = _Paths.AUTH;
+  static const FORGET_PASSWORD = _Paths.FORGET_PASSWORD;
   static const INTRO = _Paths.INTRO;
   static const SPLASH = _Paths.SPLASH;
   static const COURSES = _Paths.COURSES;
   static const COURSEDETAILSVIEW = _Paths.COURSEDETAILSVIEW;
   static const ACTIVITIESANDSTORY = _Paths.ACTIVITIESANDSTORY;
   static const GAME = _Paths.GAME;
-  static const SIGN_IN = _Paths.SIGN_IN;
-  static const SIGN_Up = _Paths.SIGN_UP;
+
 
 
 }
@@ -21,12 +21,12 @@ abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
   static const AUTH = '/auth';
+  static const FORGET_PASSWORD = '/forgot-password';
   static const INTRO = '/intro';
   static const SPLASH = '/splash';
   static const COURSES = '/courses_view';
   static const COURSEDETAILSVIEW = '/course_view';
   static const ACTIVITIESANDSTORY = '/activities_and_story';
   static const GAME = '/game';
-  static const SIGN_IN = '/sign_in';
-  static const SIGN_UP = '/sign_up';
+
 }
