@@ -7,8 +7,14 @@ abstract class Routes {
   static const AUTH = _Paths.AUTH;
   static const INTRO = _Paths.INTRO;
   static const SPLASH = _Paths.SPLASH;
-  static const SIGN_IN = _Paths.SPLASH;
-  static const SIGN_UP = _Paths.SPLASH;
+  static const COURSES = _Paths.COURSES;
+  static const COURSEDETAILSVIEW = _Paths.COURSEDETAILSVIEW;
+  static const ACTIVITIESANDSTORY = _Paths.ACTIVITIESANDSTORY;
+  static const GAME = _Paths.GAME;
+  static const SIGN_IN = _Paths.SIGN_IN;
+  static const SIGN_Up = _Paths.SIGN_UP;
+
+
 }
 
 abstract class _Paths {
@@ -17,6 +23,10 @@ abstract class _Paths {
   static const AUTH = '/auth';
   static const INTRO = '/intro';
   static const SPLASH = '/splash';
-  static const SIGN_IN = '/sign-in';
-  static const SIGN_UP = '/sign-up';
+  static const COURSES = '/courses_view';
+  static const COURSEDETAILSVIEW = '/course_view';
+  static const ACTIVITIESANDSTORY = '/activities_and_story';
+  static const GAME = '/game';
+  static const SIGN_IN = '/sign_in';
+  static const SIGN_UP = '/sign_up';
 }

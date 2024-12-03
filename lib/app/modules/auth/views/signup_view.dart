@@ -1,4 +1,4 @@
-// login_view.dart
+// signup_view.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
@@ -9,9 +9,10 @@ import 'package:hikaya/app/core/widgets/custom_text.dart';
 import 'package:hikaya/app/core/widgets/custom_textfiled.dart';
 import '../controllers/auth_controller.dart';
 
-class LoginView extends GetView<AuthController> {
-  LoginView({Key? key}) : super(key: key);
+class SignupView extends GetView<AuthController> {
+  SignupView({Key? key}) : super(key: key);
 
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -31,29 +32,42 @@ class LoginView extends GetView<AuthController> {
                 children: [
                   92.height,
                   CustomText(
-                    'سجل دخولك الآن',
+                    'إنشاء حساب جديد',
                     alignment: Alignment.center,
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
                   ),
                   8.height,
                   CustomText(
-                    'لنستطيع البدء بالرحلة',
+                    'فقط اتبع الخطوات التالية',
                     alignment: Alignment.center,
                     fontSize: 16,
                     color: AppColors.textLight,
                   ),
-                  const SizedBox(height: 32),
+                  32.height,
+                  CustomTextField(
+                    controller: nameController,
+                    keyboardType: TextInputType.name,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'يرجى إدخال الاسم';
+                      }
+                      return null;
+                    },
+                    hintText: 'الاسم',
+                  ),
+                  16.height,
                   CustomTextField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
                       return value!.isValidEmail ?? value;
                     },
+                    hintText: 'البريد الإلكتروني',
                   ),
-                  const SizedBox(height: 16),
+                  16.height,
                   Obx(
-                    () => CustomTextField(
+                        () => CustomTextField(
                       controller: passwordController,
                       obscureText: !controller.isPasswordVisible.value,
                       validator: (value) {
@@ -70,19 +84,9 @@ class LoginView extends GetView<AuthController> {
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: TextButton(
-                      onPressed: () => Get.toNamed('/forgot-password'),
-                      child: const Text(
-                        'هل نسيت كلمة السر؟',
-                        style: TextStyle(color: Colors.green),
-                      ),
-                    ),
-                  ),
                   24.height,
                   Obx(
-                    () => SizedBox(
+                        () => SizedBox(
                       width: double.infinity,
                       height: 50,
                       child: CustomButton(
@@ -90,23 +94,24 @@ class LoginView extends GetView<AuthController> {
                         onPressed: controller.isLoading.value
                             ? null
                             : () async {
-                                if (formKey.currentState!.validate()) {
-                                  await controller.signIn(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  );
-                                }
-                              },
+                          if (formKey.currentState!.validate()) {
+                            await controller.signUp(
+                              name: nameController.text,
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                          }
+                        },
                         widget: controller.isLoading.value
                             ? const CircularProgressIndicator(
-                                color: Colors.white,
-                              )
+                          color: Colors.white,
+                        )
                             : const CustomText(
-                                'تسجيل الدخول',
-                                alignment: Alignment.center,
-                                fontSize: 16,
-                                color: AppColors.white,
-                              ),
+                          'إنشاء حساب',
+                          alignment: Alignment.center,
+                          fontSize: 16,
+                          color: AppColors.white,
+                        ),
                       ),
                     ),
                   ),
@@ -115,12 +120,12 @@ class LoginView extends GetView<AuthController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('لا تمتلك حساب؟'),
+                        const Text('لديك حساب بالفعل؟'),
                         TextButton(
                           onPressed: controller.toggleView,
                           child: const Text(
-                            'أنشئ حساب الآن',
-                            style: TextStyle(color: Colors.green),
+                            'سجل دخولك',
+                            style: TextStyle(color: AppColors.primary),
                           ),
                         ),
                       ],

@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
+class CoursesController extends GetxController {
   //TODO: Implement HomeController
 
-  final RxInt currentIndex = 2.obs;
 
   final count = 0.obs;
   @override
@@ -21,10 +20,6 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  void changeBottomNavIndex(int index) {
-    currentIndex.value = index;
-    update();
-  }
 
   void increment() => count.value++;
 }
