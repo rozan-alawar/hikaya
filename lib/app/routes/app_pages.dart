@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:hikaya/app/modules/auth/views/forget_password_view.dart';
+import 'package:hikaya/app/modules/auth/views/verification_view.dart';
 import 'package:hikaya/app/modules/home/bindings/activities_and_story_binding.dart';
 import 'package:hikaya/app/modules/home/bindings/courses_binding.dart';
 import 'package:hikaya/app/modules/home/views/activities_and_story_view.dart';
@@ -44,6 +45,11 @@ class AppPages {
     GetPage(
       name: _Paths.FORGET_PASSWORD,
       page: () =>  ForgotPasswordView(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: _Paths.VERIFICATION,
+      page: () => VerificationView(),
       binding: AuthBinding(),
     ),
     GetPage(

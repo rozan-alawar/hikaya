@@ -12,6 +12,7 @@ abstract class Routes {
   static const COURSEDETAILSVIEW = _Paths.COURSEDETAILSVIEW;
   static const ACTIVITIESANDSTORY = _Paths.ACTIVITIESANDSTORY;
   static const GAME = _Paths.GAME;
+  static const VERIFICATION = _Paths.VERIFICATION;
 
 
 
@@ -22,6 +23,7 @@ abstract class _Paths {
   static const HOME = '/home';
   static const AUTH = '/auth';
   static const FORGET_PASSWORD = '/forgot-password';
+  static const VERIFICATION = '/verification';
   static const INTRO = '/intro';
   static const SPLASH = '/splash';
   static const COURSES = '/courses_view';

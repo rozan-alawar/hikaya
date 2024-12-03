@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:hikaya/app/core/utils/app_colors.dart';
+import 'package:hikaya/app/routes/app_pages.dart';
 
 class AuthController extends GetxController {
   final isLoading = false.obs;
@@ -67,11 +69,14 @@ class AuthController extends GetxController {
       // Implement your forgot password logic here
       // await Future.delayed(const Duration(seconds: 2)); // Simulate API call
       Get.snackbar(
+
         'نجاح',
         'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني',
         snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: AppColors.primary,
+        colorText:  AppColors.white,
       );
-      Get.back(); // Return to login screen
+      Get.toNamed(Routes.VERIFICATION); // Return to login screen
     } catch (e) {
       Get.snackbar(
         'خطأ',
