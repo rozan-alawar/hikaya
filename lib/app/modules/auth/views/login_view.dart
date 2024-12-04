@@ -49,7 +49,8 @@ class LoginView extends GetView<AuthController> {
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
-                      return value!.isValidEmail ?? value;
+                      return  value!.isValidEmail;
+
                     },
                   ),
                   const SizedBox(height: 16),
@@ -58,7 +59,7 @@ class LoginView extends GetView<AuthController> {
                       controller: passwordController,
                       obscureText: !controller.isPasswordVisible.value,
                       validator: (value) {
-                        return value!.isValidPassword ?? value;
+                        return value!.isValidPassword;
                       },
                       hintText: 'كلمة المرور',
                       suffixIcon: IconButton(

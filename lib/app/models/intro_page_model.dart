@@ -1,17 +1,17 @@
-class OnboardingPageModel{
-  String imageAsset;
-  String title;
-  String subTitle;
-  String buttonText;
+
+// onboarding_page_model.dart
+class OnboardingPageModel {
+  final String imageAsset;
+  final String title;
+  final String subTitle;
 
   OnboardingPageModel({
     required this.imageAsset,
     required this.title,
     required this.subTitle,
-    required this.buttonText,
-});
-
+  });
 }
+
 
 /**
  *

@@ -61,7 +61,7 @@ class SignupView extends GetView<AuthController> {
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
-                      return value!.isValidEmail ?? value;
+                      return value!.isValidEmail ;
                     },
                     hintText: 'البريد الإلكتروني',
                   ),
@@ -71,7 +71,7 @@ class SignupView extends GetView<AuthController> {
                       controller: passwordController,
                       obscureText: !controller.isPasswordVisible.value,
                       validator: (value) {
-                        return value!.isValidPassword ?? value;
+                        return value!.isValidPassword ;
                       },
                       hintText: 'كلمة المرور',
                       suffixIcon: IconButton(
