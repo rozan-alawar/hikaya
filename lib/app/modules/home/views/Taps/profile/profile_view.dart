@@ -41,19 +41,19 @@ class ProfileView extends GetView<HomeController> {
             ),
             const SizedBox(height: 16),
             // User Name
-            Obx(
-              () => CustomText(
-                controller.user?.displayName ?? "Rozan Alawar",
+            CustomText(
+              alignment: Alignment.center,
+                controller.user?.displayName ?? "نور محمد",
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
-            ),
+
             const SizedBox(height: 32),
             // Menu Items
             MenuItem(
               icon: Icons.notifications_outlined,
               title: 'الإشعارات',
-              // onTap: () => controller.handleNotifications(),
+              onTap: () => Get.toNamed(Routes.NOTIFICATION)
             ),
             MenuItem(
               icon: Icons.info_outline,

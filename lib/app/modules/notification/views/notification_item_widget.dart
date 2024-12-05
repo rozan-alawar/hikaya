@@ -19,23 +19,11 @@ class NotificationItem extends StatelessWidget {
       color: isNew ? Colors.blue.shade50 : Colors.white,
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        leading: Container(
-          width: 40,
-          height: 40,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: AppColors.primary,
-              width: 2,
-            ),
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.asset(
-              'assets/images/logo.png',
-              fit: BoxFit.cover,
-            ),
-          ),
+        leading: Image.asset(
+          'assets/images/logo.png',
+          fit: BoxFit.fill,
+          width: 60,
+          height: 60,
         ),
         title: CustomText(
           notification.title,

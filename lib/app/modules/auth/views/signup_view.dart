@@ -44,7 +44,7 @@ class SignupView extends GetView<AuthController> {
                     fontSize: 16,
                     color: AppColors.textLight,
                   ),
-                  32.height,
+                  60.height,
                   CustomTextField(
                     controller: nameController,
                     keyboardType: TextInputType.name,
@@ -86,34 +86,30 @@ class SignupView extends GetView<AuthController> {
                   ),
                   24.height,
                   Obx(
-                        () => SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: CustomButton(
-                        backgraoundColor: AppColors.primary,
-                        onPressed: controller.isLoading.value
-                            ? null
-                            : () async {
-                          if (formKey.currentState!.validate()) {
-                            await controller.signUp(
-                              name: nameController.text,
-                              email: emailController.text,
-                              password: passwordController.text,
-                            );
-                          }
-                        },
-                        widget: controller.isLoading.value
-                            ? const CircularProgressIndicator(
-                          color: Colors.white,
-                        )
-                            : const CustomText(
-                          'إنشاء حساب',
-                          alignment: Alignment.center,
-                          fontSize: 16,
-                          color: AppColors.white,
+                        () => CustomButton(
+                          backgraoundColor: AppColors.primary,
+                          onPressed: controller.isLoading.value
+                              ? null
+                              : () async {
+                            if (formKey.currentState!.validate()) {
+                              await controller.signUp(
+                                name: nameController.text,
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                            }
+                          },
+                          widget: controller.isLoading.value
+                              ? const CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                              : const CustomText(
+                            'إنشاء حساب',
+                            alignment: Alignment.center,
+                            fontSize: 16,
+                            color: AppColors.white,
+                          ),
                         ),
-                      ),
-                    ),
                   ),
                   const Spacer(),
                   Center(

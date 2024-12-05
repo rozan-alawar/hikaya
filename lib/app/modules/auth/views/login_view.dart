@@ -56,6 +56,7 @@ class LoginView extends GetView<AuthController> {
                   const SizedBox(height: 16),
                   Obx(
                     () => CustomTextField(
+
                       controller: passwordController,
                       obscureText: !controller.isPasswordVisible.value,
                       validator: (value) {
@@ -84,32 +85,28 @@ class LoginView extends GetView<AuthController> {
                   ),
                   24.height,
                   Obx(
-                    () => SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: CustomButton(
-                        backgraoundColor: AppColors.primary,
-                        onPressed: controller.isLoading.value
-                            ? null
-                            : () async {
-                                if (formKey.currentState!.validate()) {
-                                  await controller.signIn(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  );
-                                }
-                              },
-                        widget: controller.isLoading.value
-                            ? const CircularProgressIndicator(
-                                color: Colors.white,
-                              )
-                            : const CustomText(
-                                'تسجيل الدخول',
-                                alignment: Alignment.center,
-                                fontSize: 16,
-                                color: AppColors.white,
-                              ),
-                      ),
+                    () => CustomButton(
+                      backgraoundColor: AppColors.primary,
+                      onPressed: controller.isLoading.value
+                          ? null
+                          : () async {
+                              if (formKey.currentState!.validate()) {
+                                await controller.signIn(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                );
+                              }
+                            },
+                      widget: controller.isLoading.value
+                          ? const CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : const CustomText(
+                              'تسجيل الدخول',
+                              alignment: Alignment.center,
+                              fontSize: 16,
+                              color: AppColors.white,
+                            ),
                     ),
                   ),
                   const Spacer(),

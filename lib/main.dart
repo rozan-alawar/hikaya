@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'حكاية',
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.HOME,
+      initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       locale: const Locale('ar'),
       theme: ThemeData(

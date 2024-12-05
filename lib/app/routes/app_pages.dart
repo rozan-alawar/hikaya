@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:hikaya/app/modules/home/views/Taps/main/main_view.dart';
 
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
