@@ -3,14 +3,16 @@ import 'package:get/get.dart';
 
 class CustomSnackBar {
   static showCustomSnackBar(
-      {required String title, required String message, Duration? duration}) {
+      {required String title, required String message, Duration? duration,SnackPosition? position}) {
     Get.snackbar(
       title,
       message,
+
       duration: duration ?? const Duration(seconds: 3),
       margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
       colorText: Colors.white,
       backgroundColor: Colors.green,
+      snackPosition: position,
       icon: const Icon(
         Icons.check_circle,
         color: Colors.white,
@@ -27,7 +29,7 @@ class CustomSnackBar {
       title,
       message,
       duration: duration ?? const Duration(seconds: 3),
-      margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+      margin: const EdgeInsets.only(top: 10, left: 10, right: 10,bottom: 20),
       colorText: Colors.white,
       backgroundColor: color ?? Colors.redAccent,
       icon: const Icon(
@@ -44,9 +46,14 @@ class CustomSnackBar {
       Duration? duration}) {
     Get.rawSnackbar(
       title: title,
+
       duration: duration ?? const Duration(seconds: 3),
       snackStyle: SnackStyle.GROUNDED,
       backgroundColor: color ?? Colors.green,
+      snackPosition: SnackPosition.TOP,
+      margin: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+      borderRadius: 25,
+
       onTap: (snack) {
         Get.closeAllSnackbars();
       },

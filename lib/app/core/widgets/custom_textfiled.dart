@@ -57,7 +57,7 @@ class CustomTextField extends StatelessWidget {
         maxLines: multiLines! ? 3 : 1,
         inputFormatters: inputFormater,
         obscureText: obscureText,
-        style: textStyle ?? TextStyle(fontSize: 16),
+        style: textStyle ?? const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         keyboardType: keyboardType,
         onTap: onTap ?? () {},
         onFieldSubmitted: onFieldSubmitted ?? (v) {},
@@ -76,7 +76,6 @@ class CustomTextField extends StatelessWidget {
                 fontSize: 14
               ),
           filled: true,
-
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: AppColors.transparent),
             borderRadius: BorderRadius.circular(15),

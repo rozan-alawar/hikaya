@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
+import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/core/widgets/custom_button.dart';
 import 'package:hikaya/app/core/widgets/custom_text.dart';
 import '../controllers/auth_controller.dart';
-
+// verification_view.dart
 class VerificationView extends GetView<AuthController> {
   VerificationView({Key? key}) : super(key: key);
 
-  final List<TextEditingController> codeControllers = List.generate(
+  final List<TextEditingController> otpControllers = List.generate(
     4,
         (index) => TextEditingController(),
   );
-
   final List<FocusNode> focusNodes = List.generate(
     4,
         (index) => FocusNode(),
@@ -22,168 +22,155 @@ class VerificationView extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Get.back(),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Get.back(),
         ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomText(
-                  'التحقق من الرمز',
-                  alignment: Alignment.center,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
-                16.height,
-                CustomText(
-                  'يرجى التحقق من بريدك الإلكتروني ... لرؤية رمز التحقق',
-                  alignment: Alignment.center,
-                  fontSize: 16,
-                  color: AppColors.textLight,
-                ),
-                32.height,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(
-                    4,
-                        (index) => SizedBox(
-                      width: 70,
-                      height: 60,
-                      child: TextFormField(
-                        controller: codeControllers[index],
-                        focusNode: focusNodes[index],
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.center,
-                        maxLength: 1,
-                        decoration: InputDecoration(
-                          counterText: '',
-                          filled: true,
-                          fillColor: Colors.grey[100],
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide.none,
-                          ),
-                        ),
-                        onChanged: (value) {
-                          if (value.length == 1 && index < 3) {
-                            focusNodes[index + 1].requestFocus();
-                          } else if (value.isEmpty && index > 0) {
-                            focusNodes[index - 1].requestFocus();
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                24.height,
-                Obx(
-                      () => SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: CustomButton(
-                      backgraoundColor: AppColors.primary,
-                      onPressed: controller.isLoading.value
-                          ? null
-                          : () async {
-                        final code = codeControllers
-                            .map((controller) => controller.text)
-                            .join();
-                        if (code.length == 4) {
-                          await controller.verifyCode(code);
-                        }
-                      },
-                      widget: controller.isLoading.value
-                          ? const CircularProgressIndicator(
-                        color: Colors.white,
-                      )
-                          : const CustomText(
-                        'تحقق',
-                        alignment: Alignment.center,
-                        fontSize: 16,
-                        color: AppColors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                24.height,
-                Center(
-                  child: TextButton(
-                    onPressed: controller.isLoading.value
-                        ? null
-                        : () => controller.resendVerificationCode(),
-                    child: const Text(
-                      'إعادة إرسال الرمز',
-                      style: TextStyle(color: AppColors.primary),
-                    ),
-                  ),
-                ),
-              ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomText(
+            alignment: Alignment.center   ,
+               'التحقق من الرمز',
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
             ),
-          ),
+            const SizedBox(height: 8),
+            CustomText(
+              alignment: Alignment.center   ,
+              'يرجى التحقق من بريدك الإلكتروني ... لرؤية رمز التحقق',
+
+                fontSize: 16,
+                color: AppColors.textLight,
+            ),
+           60.height,
+            CustomText(
+              alignment: Alignment.topRight   ,
+              'رمز التحقق',
+
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+
+            ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(
+                4,
+                    (index) => SizedBox(
+                  width: 80,
+                  child: TextFormField(
+                    controller: otpControllers[index],
+                    focusNode: focusNodes[index],
+                    keyboardType: TextInputType.number,
+                    textAlign: TextAlign.center,
+                    maxLength: 1,
+                    style: const TextStyle(fontSize: 24),
+                    decoration: InputDecoration(
+                      counterText: "",
+                      filled: true,
+                      fillColor: Colors.grey[100],
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                    onChanged: (value) {
+                      if (value.length == 1 && index < 3) {
+                        focusNodes[index + 1].requestFocus();
+                      }
+                      if (value.isEmpty && index > 0) {
+                        focusNodes[index - 1].requestFocus();
+                      }
+                      if (index == 3 && value.length == 1) {
+                        String code = otpControllers.map((controller) => controller.text).join();
+                        verifyEnteredCode(code);
+                      }
+                    },
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 32),
+            SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: Obx(
+                    () => CustomButton(
+                  onPressed: controller.isLoading.value
+                      ? null
+                      : () {
+                    String code = otpControllers.map((controller) => controller.text).join();
+                    verifyEnteredCode(code);
+                  },
+                  widget: controller.isLoading.value
+                      ? const CircularProgressIndicator(color: Colors.white)
+                      : const Text(
+                    'تحقق',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                  backgraoundColor: AppColors.primary,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Center(
+              child: TextButton(
+                onPressed: () => controller.resendVerificationCode(),
+                child: const Text(
+                  'إعادة إرسال الرمز',
+                  style: TextStyle(
+                    color: Colors.green,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
+  void verifyEnteredCode(String code) {
+    if (code == "6543") {
+      Get.snackbar(
+        'نجاح',
+        'تم التحقق بنجاح',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+      Get.offAllNamed('/home');
+    } else {
+      Get.snackbar(
+        'خطأ',
+        'رمز التحقق غير صحيح',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+    }
+  }
+
   @override
   void dispose() {
-    for (var controller in codeControllers) {
+    for (var controller in otpControllers) {
       controller.dispose();
     }
     for (var node in focusNodes) {
       node.dispose();
     }
-  }
-}
 
-// Add these methods to your AuthController
-extension VerificationMethods on AuthController {
-  Future<void> verifyCode(String code) async {
-    try {
-      isLoading.value = true;
-      // Implement your verification logic here
-      await Future.delayed(const Duration(seconds: 2)); // Simulate API call
-      Get.offAllNamed('/home'); // Navigate to home after successful verification
-    } catch (e) {
-      Get.snackbar(
-        'خطأ',
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    } finally {
-      isLoading.value = false;
-    }
-  }
-
-  Future<void> resendVerificationCode() async {
-    try {
-      isLoading.value = true;
-      // Implement your resend code logic here
-      await Future.delayed(const Duration(seconds: 2)); // Simulate API call
-      Get.snackbar(
-        'نجاح',
-        'تم إرسال رمز جديد إلى بريدك الإلكتروني',
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    } catch (e) {
-      Get.snackbar(
-        'خطأ',
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    } finally {
-      isLoading.value = false;
-    }
   }
 }

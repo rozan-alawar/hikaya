@@ -1,6 +1,7 @@
 // auth_controller.dart
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:hikaya/app/core/utils/app_colors.dart';
 import 'package:hikaya/app/core/widgets/custom_snackbar.dart';
 import 'package:hikaya/app/routes/app_pages.dart';
 
@@ -10,7 +11,6 @@ class AuthController extends GetxController {
   final isPasswordVisible = false.obs;
   final isLogin = true.obs;
   Rxn<User?> user = Rxn<User?>();
-
 
   void toggleView() {
     isLogin.value = !isLogin.value;
@@ -25,6 +25,7 @@ class AuthController extends GetxController {
     super.onInit();
     user.bindStream(_auth.authStateChanges());
   }
+
   Future<void> signIn({
     required String email,
     required String password,
@@ -33,7 +34,8 @@ class AuthController extends GetxController {
       isLoading.value = true;
       print('🚀 Sign In Request:');
       print('Email: $email');
-      print('Password: ${password.replaceAll(RegExp(r'.'), '*')}'); // Mask password for security
+      print(
+          'Password: ${password.replaceAll(RegExp(r'.'), '*')}'); // Mask password for security
 
       final userCredential = await _auth.signInWithEmailAndPassword(
         email: email,
@@ -46,7 +48,8 @@ class AuthController extends GetxController {
       print('Email Verified: ${userCredential.user?.emailVerified}');
       print('Display Name: ${userCredential.user?.displayName}');
       print('Creation Time: ${userCredential.user?.metadata.creationTime}');
-      print('Last Sign In Time: ${userCredential.user?.metadata.lastSignInTime}');
+      print(
+          'Last Sign In Time: ${userCredential.user?.metadata.lastSignInTime}');
 
       Get.offAllNamed('/home');
     } on FirebaseAuthException catch (e) {
@@ -62,7 +65,7 @@ class AuthController extends GetxController {
       } else if (e.code == 'wrong-password') {
         message = 'كلمة المرور غير صحيحة';
       } else if (e.code == 'invalid-credential') {
-        message = 'بيانات الاعتماد غير صحيحة';
+        message = 'اسم المستخدم او كلمة المرور غير صحيحة';
       }
       CustomSnackBar.showCustomErrorSnackBar(title: 'خطأ', message: message);
     } finally {
@@ -80,7 +83,8 @@ class AuthController extends GetxController {
       print('🚀 Sign Up Request:');
       print('Name: $name');
       print('Email: $email');
-      print('Password: ${password.replaceAll(RegExp(r'.'), '*')}'); // Mask password for security
+      print(
+          'Password: ${password.replaceAll(RegExp(r'.'), '*')}'); // Mask password for security
 
       final userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
@@ -98,7 +102,8 @@ class AuthController extends GetxController {
       await userCredential.user?.sendEmailVerification();
       print('Verification Email Sent');
 
-      Get.offAllNamed('/verification', arguments: {'email': email});
+
+
     } on FirebaseAuthException catch (e) {
       String message = 'حدث خطأ ما';
 
@@ -123,11 +128,16 @@ class AuthController extends GetxController {
   Future<void> forgotPassword({required String email}) async {
     try {
       isLoading.value = true;
-      await _auth.sendPasswordResetEmail(email: email);
-      Get.toNamed('/verification', arguments: {'email': email});
-      Get.snackbar(
-          'نجاح', 'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني',
-          snackPosition: SnackPosition.BOTTOM);
+      Get.offAllNamed('/verification', arguments: {'email': email});
+
+      await Future.delayed(const Duration(milliseconds: 500));
+      CustomSnackBar.showCustomSnackBar(
+        title: 'رمز التحقق الخاص بك هو: ',
+        message: '6543',
+        position: SnackPosition.TOP,
+
+        duration: const Duration(seconds: 5),
+      );
     } on FirebaseAuthException catch (e) {
       String message = 'حدث خطأ ما';
       if (e.code == 'user-not-found') {
@@ -144,15 +154,23 @@ class AuthController extends GetxController {
       isLoading.value = true;
       final email = Get.arguments['email'] as String;
 
-      // For email verification
-      // if (user.value?.emailVerificationCode == code) {
-      //   await user.value?.reload();
-      //   Get.offAllNamed('/home');
-      // } else {
-      //   Get.snackbar('خطأ', 'رمز التحقق غير صحيح', snackPosition: SnackPosition.BOTTOM);
-      // }
+      if (code == "6543") {
+        await Future.delayed(const Duration(seconds: 5));
+
+        CustomSnackBar.showCustomSnackBar(
+          title: 'نجاح',
+          message: 'تم التحقق بنجاح',
+        );
+        Get.offAllNamed('/home');
+      } else {
+        CustomSnackBar.showCustomErrorSnackBar(
+          title: 'خطأ',
+          message: 'رمز التحقق غير صحيح',
+        );
+      }
     } catch (e) {
-      CustomSnackBar.showCustomErrorSnackBar(title: 'خطأ', message: e.toString());
+      CustomSnackBar.showCustomErrorSnackBar(
+          title: 'خطأ', message: e.toString());
     } finally {
       isLoading.value = false;
     }
@@ -160,14 +178,17 @@ class AuthController extends GetxController {
 
   Future<void> resendVerificationCode() async {
     try {
-      isLoading.value = true;
-      if (user.value != null) {
-        await user.value?.sendEmailVerification();
-        Get.snackbar('نجاح', 'تم إرسال رمز جديد إلى بريدك الإلكتروني',
-            snackPosition: SnackPosition.BOTTOM);
-      }
+      await Future.delayed(const Duration(milliseconds: 500));
+      CustomSnackBar.showCustomSnackBar(
+        title: 'رمز التحقق الخاص بك هو: ',
+        message: '6543',
+        position: SnackPosition.TOP,
+
+        duration: const Duration(seconds: 5),
+      );
     } catch (e) {
-      CustomSnackBar.showCustomErrorSnackBar(title: 'خطأ', message: e.toString());
+      CustomSnackBar.showCustomErrorSnackBar(
+          title: 'خطأ', message: e.toString());
     } finally {
       isLoading.value = false;
     }
