@@ -1,23 +1,26 @@
 import 'package:get/get.dart';
-import 'package:hikaya/app/modules/auth/views/forget_password_view.dart';
-import 'package:hikaya/app/modules/auth/views/verification_view.dart';
-import 'package:hikaya/app/modules/home/bindings/activities_and_story_binding.dart';
-import 'package:hikaya/app/modules/home/bindings/courses_binding.dart';
-import 'package:hikaya/app/modules/home/views/activities_and_story_view.dart';
-import 'package:hikaya/app/modules/home/views/courses_view.dart';
-import 'package:hikaya/app/modules/splash/bindings/splash_binding.dart';
-import 'package:hikaya/app/modules/splash/views/splash_view.dart';
 
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
+import '../modules/auth/views/forget_password_view.dart';
+import '../modules/auth/views/verification_view.dart';
+import '../modules/home/bindings/activities_and_story_binding.dart';
 import '../modules/home/bindings/course_details_binding.dart';
+import '../modules/home/bindings/courses_binding.dart';
 import '../modules/home/bindings/game_binding.dart';
 import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/views/Taps/profile/about_us_view.dart';
+import '../modules/home/views/activities_and_story_view.dart';
 import '../modules/home/views/course_details_view.dart';
+import '../modules/home/views/courses_view.dart';
 import '../modules/home/views/game_view.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/intro/bindings/intro_binding.dart';
 import '../modules/intro/views/intro_view.dart';
+import '../modules/notification/bindings/notification_binding.dart';
+import '../modules/notification/views/notification_view.dart';
+import '../modules/splash/bindings/splash_binding.dart';
+import '../modules/splash/views/splash_view.dart';
 
 part 'app_routes.dart';
 
@@ -27,7 +30,7 @@ class AppPages {
   static const INITIAL = Routes.SPLASH;
 
   static final routes = [
-      GetPage(
+    GetPage(
       name: _Paths.SPLASH,
       page: () => const SplashView(),
       binding: SplashBinding(),
@@ -44,7 +47,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.FORGET_PASSWORD,
-      page: () =>  ForgotPasswordView(),
+      page: () => ForgotPasswordView(),
       binding: AuthBinding(),
     ),
     GetPage(
@@ -72,11 +75,20 @@ class AppPages {
       page: () => const ActivitiesAndStoryView(),
       binding: ActivitiesAndStoryBinding(),
     ),
-
     GetPage(
       name: _Paths.GAME,
       page: () => const GameView(),
       binding: GameBinding(),
+    ),
+    GetPage(
+      name: _Paths.ABOUT,
+      page: () => const AboutView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFICATION,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
     ),
   ];
 }

@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:hikaya/app/core/data/dummy_data.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
+import 'package:hikaya/app/core/utils/app_colors.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
+import 'package:hikaya/app/core/widgets/custom_text.dart';
 import 'package:hikaya/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
@@ -27,7 +29,7 @@ class HomeView extends GetView<HomeController> {
                 : 0.ph(),
             centerTitle: true,
             title: AppText(
-              text: getAppBarText(controller.currentIndex.value),
+              text: controller.getAppBarText(controller.currentIndex.value),
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -139,44 +141,37 @@ class HomeView extends GetView<HomeController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          40.height,
           Container(
+            padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(
-                  color: Color(0xff1E6C41),
-                )),
+                border: Border.all(color: AppColors.primary, width: 2)),
             child: Icon(
               Icons.person_outline,
-              size: 200,
-              color: Color(0xff1E6C41),
+              size: 100,
+              color: AppColors.primary,
             ),
           ),
-          SizedBox(
-            height: 14,
+          14.height,
+          CustomText(
+            controller.user?.displayName??"Rozan Alawar",
+            alignment: Alignment.center,
           ),
+          40.height,
+
           Expanded(
               flex: 8,
               child: ListView.separated(
                   itemBuilder: (context, index) => _buildProfileWidget(
-                        image: 'assets/images/flag1.png',
+                        icon:Icons.notifications_none_outlined,
                         title: 'البلاد والكثبان الرملية معامله',
-                        subtitle: 'للطلبات من للتعاملات',
-                        price: '115.99',
-                        rating: '4.8',
                       ),
                   separatorBuilder: (context, index) => const SizedBox(
                         height: 16,
                       ),
                   itemCount: 7)),
-          Expanded(
-              flex: 1,
-              child: _buildProfileWidget(
-                image: 'assets/images/flag1.png',
-                title: 'البلاد والكثبان الرملية معامله',
-                subtitle: 'للطلبات من للتعاملات',
-                price: '115.99',
-                rating: '4.8',
-              )),
+
         ],
       ),
     ));
@@ -267,31 +262,18 @@ class HomeView extends GetView<HomeController> {
   }
 
   Widget _buildProfileWidget({
-    required String image,
+    required IconData icon,
     required String title,
-    required String subtitle,
-    required String price,
-    required String rating,
+
   }) {
-    return const ListTile(
+    return  ListTile(
       title: Text(
-        'الرئيسية ',
+        title,
         style: TextStyle(fontSize: 16, color: Color(0xff868686)),
       ),
-      leading: Icon(Icons.home_filled),
+      leading: Icon(icon),
     );
   }
 
-  String getAppBarText(int value) {
-    switch (value) {
-      case 2:
-        return 'أهم المقالات';
-      case 1:
-        return 'الأقسام الرئيسية';
-      case 0:
-        return 'الملف الشخصي';
-      default:
-        return '';
-    }
-  }
+
 }

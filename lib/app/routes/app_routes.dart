@@ -13,9 +13,8 @@ abstract class Routes {
   static const ACTIVITIESANDSTORY = _Paths.ACTIVITIESANDSTORY;
   static const GAME = _Paths.GAME;
   static const VERIFICATION = _Paths.VERIFICATION;
-
-
-
+  static const ABOUT = _Paths.ABOUT;
+  static const NOTIFICATION = _Paths.NOTIFICATION;
 }
 
 abstract class _Paths {
@@ -30,5 +29,6 @@ abstract class _Paths {
   static const COURSEDETAILSVIEW = '/course_view';
   static const ACTIVITIESANDSTORY = '/activities_and_story';
   static const GAME = '/game';
-
+  static const ABOUT = '/about';
+  static const NOTIFICATION = '/notification';
 }

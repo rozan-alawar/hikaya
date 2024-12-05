@@ -1,6 +1,6 @@
 import 'package:hikaya/app/models/category_home_model.dart';
+import 'package:hikaya/app/models/home_model.dart';
 
-import '../models/home_model.dart';
 
 class AppDummyData{
  static List<CategoryHomeModel> categoryHomeData=[
