@@ -13,7 +13,6 @@ class ProfileView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -43,33 +42,29 @@ class ProfileView extends GetView<HomeController> {
             // User Name
             CustomText(
               alignment: Alignment.center,
-                controller.user?.displayName ?? "نور محمد",
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              controller.user?.displayName ?? "نور محمد",
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
 
             const SizedBox(height: 32),
             // Menu Items
             MenuItem(
-              icon: Icons.notifications_outlined,
-              title: 'الإشعارات',
-              onTap: () => Get.toNamed(Routes.NOTIFICATION)
-            ),
+                icon: Icons.notifications_outlined,
+                title: 'الإشعارات',
+                onTap: () => Get.toNamed(Routes.NOTIFICATION)),
             MenuItem(
-              icon: Icons.info_outline,
-              title: 'عن التطبيق',
-              onTap: () => Get.toNamed(Routes.ABOUT)
-            ),
+                icon: Icons.info_outline,
+                title: 'عن التطبيق',
+                onTap: () => Get.toNamed(Routes.ABOUT)),
             MenuItem(
               icon: Icons.dark_mode_outlined,
               title: 'وضع داكن',
-              trailing: Obx(
-                () => Switch(
-                  value: controller.isDarkMode.value,
-                  onChanged: (value) => controller.toggleDarkMode(value),
-                  activeColor: AppColors.primary,
-                ),
-              ),
+              trailing: Obx(() => Switch(
+                    value: controller.isDarkMode,
+                    onChanged: controller.toggleTheme,
+                    activeColor: AppColors.primary,
+                  )),
             ),
             MenuItem(
               icon: Icons.logout,

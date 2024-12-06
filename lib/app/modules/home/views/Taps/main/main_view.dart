@@ -24,7 +24,6 @@ class HomeView extends GetView<HomeController> {
           backgroundColor: Colors.white,
           appBar: AppBar(
             elevation: 0,
-            backgroundColor: Colors.transparent,
             leading: controller.currentIndex.value == 2
                 ? Container(
               child: Icon(Icons.notifications_none_outlined),

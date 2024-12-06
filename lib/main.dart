@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/services/app_service.dart';
+import 'package:hikaya/app/core/utils/app_theme.dart';
 import 'package:hikaya/firebase_options.dart';
 import 'app/routes/app_pages.dart';
 void main() async{
@@ -21,15 +22,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    final appService = Get.find<AppService>();
+    return Obx(() => GetMaterialApp(
       title: 'حكاية',
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       locale: const Locale('ar'),
-      theme: ThemeData(
-        fontFamily: 'Abril'
-      ),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: appService.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
       // supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [
         // AppLocalizations.delegate,
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-
+        ),
     );
   }
 }

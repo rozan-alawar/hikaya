@@ -1,13 +1,21 @@
-
 import 'package:get/get.dart';
+import 'package:hikaya/app/core/utils/app_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppService extends GetxService {
   static const String _firstTimeKey = 'first_time';
+  static const String _themeKey = 'is_dark_mode';
   late SharedPreferences _prefs;
+
+  // Observable for theme mode
+  final RxBool isDarkMode = false.obs;
 
   Future<AppService> init() async {
     _prefs = await SharedPreferences.getInstance();
+
+    // Load saved theme mode
+    isDarkMode.value = _prefs.getBool(_themeKey) ?? false;
+
     return this;
   }
 
@@ -17,5 +25,17 @@ class AppService extends GetxService {
 
   Future<void> setFirstTime(bool value) async {
     await _prefs.setBool(_firstTimeKey, value);
+  }
+
+  // Save theme mode preference
+  Future<void> saveThemeMode(bool isDark) async {
+    await _prefs.setBool(_themeKey, isDark);
+    isDarkMode.value = isDark;
+    Get.changeTheme(isDark ? AppTheme.darkTheme : AppTheme.lightTheme);
+  }
+
+  // Get saved theme mode
+  bool getThemeMode() {
+    return _prefs.getBool(_themeKey) ?? false;
   }
 }

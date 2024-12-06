@@ -15,7 +15,6 @@ import '../modules/home/views/activities_and_story_view.dart';
 import '../modules/home/views/course_details_view.dart';
 import '../modules/home/views/courses_view.dart';
 import '../modules/home/views/game_view.dart';
-import '../modules/home/views/home_view.dart';
 import '../modules/intro/bindings/intro_binding.dart';
 import '../modules/intro/views/intro_view.dart';
 import '../modules/notification/bindings/notification_binding.dart';

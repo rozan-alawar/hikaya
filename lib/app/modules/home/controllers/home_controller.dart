@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:hikaya/app/core/services/app_service.dart';
+import 'package:hikaya/app/core/utils/app_theme.dart';
 import 'package:hikaya/app/core/widgets/custom_snackbar.dart';
 import 'package:hikaya/app/modules/auth/controllers/auth_controller.dart';
 
@@ -8,11 +10,13 @@ class HomeController extends GetxController {
 
   final RxInt currentIndex = 2.obs;
   User? user = FirebaseAuth.instance.currentUser;
-  final RxBool isDarkMode = false.obs;
+  final appService = Get.find<AppService>();
 
-  void toggleDarkMode(bool value) {
-    isDarkMode.value = value;
+  void toggleTheme(bool value) async {
+    await appService.saveThemeMode(value);
   }
+
+  bool get isDarkMode => appService.isDarkMode.value;
 
   void changeBottomNavIndex(int index) {
     currentIndex.value = index;

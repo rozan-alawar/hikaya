@@ -20,6 +20,12 @@ class AppColors {
   static const Color success = Color(0xFF4CAF50); // أخضر
   static const Color warning = Color(0xFFFFC107); // أصفر
 
+  //الوان الوضع الداكن
+  static const Color darkBackground = Color(0xFF121212);
+  static const Color darkSurface = Color(0xFF1E1E1E);
+  static const Color darkText = Colors.white;
+  static const Color darkTextSecondary = Colors.grey;
+
 // ألوان العلم الفلسطيني
   static const Color flagRed = Color(0xFFE4312B); // أحمر العلم
   static const Color flagGreen = Color(0xFF149954); // أخضر العلم

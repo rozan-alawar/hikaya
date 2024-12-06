@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 class AppText extends StatelessWidget {
   final String text;
   final double fontSize;
-  final Color color;
+  final Color? color;
   FontWeight fontWeight;
   TextAlign? textAlign;
   bool isUnderline;
   final Function()? onPressed; // Added onPressed for click functionality
 
-  AppText({
+  AppText( {
     super.key,
     required this.text,
     required this.fontSize,
-    this.color = Colors.black,
+    this.color ,
     this.textAlign,
     this.isUnderline = false,
     this.fontWeight = FontWeight.normal,
