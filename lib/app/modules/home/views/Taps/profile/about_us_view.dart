@@ -37,7 +37,7 @@ class AboutView extends StatelessWidget{
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: appService.isDarkMode.value ? AppColors.flagBlack.withOpacity(.7) : AppColors.white,
+                color: appService.isDarkMode.value ? AppColors.white.withOpacity(.1) : AppColors.flagBlack.withOpacity(.1) ,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
@@ -62,7 +62,7 @@ class AboutView extends StatelessWidget{
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: appService.isDarkMode.value ? AppColors.flagBlack.withOpacity(.7) : AppColors.white,
+                color: appService.isDarkMode.value ? AppColors.white.withOpacity(.1) : AppColors.flagBlack.withOpacity(.1) ,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(

@@ -27,7 +27,7 @@ class BackButtonWidget extends StatelessWidget {
           color: appService.isDarkMode.value ? AppColors.white.withOpacity(0.2) : AppColors.white.withOpacity(0.1),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Colors.black.withOpacity(0.06),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),

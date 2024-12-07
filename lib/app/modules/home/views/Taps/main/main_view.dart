@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:hikaya/app/core/data/dummy_data.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
+import 'package:hikaya/app/core/services/app_service.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/core/widgets/custom_text.dart';
@@ -19,15 +19,41 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    final appService = Get.find<AppService>();
+
     return Obx(() =>
         Scaffold(
-          backgroundColor: Colors.white,
           appBar: AppBar(
             elevation: 0,
             leading: controller.currentIndex.value == 2
-                ? Container(
-              child: Icon(Icons.notifications_none_outlined),
-              margin: EdgeInsets.symmetric(horizontal: 12),
+                ? Padding(
+              padding: EdgeInsets.only(right: 10.0),
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: appService.isDarkMode.value ? AppColors.white.withOpacity(0.2) : AppColors.white.withOpacity(0.1),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(20),
+                    onTap:()=>Get.toNamed(Routes.NOTIFICATION),
+                    child: Icon(
+                      Icons.notifications_outlined,
+                      size: 25,
+                    ),
+                  ),
+                ),
+              ),
             )
                 : 0.ph(),
             centerTitle: true,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/core/widgets/custom_text.dart';
@@ -53,10 +54,13 @@ class ProfileView extends GetView<HomeController> {
                 icon: Icons.notifications_outlined,
                 title: 'الإشعارات',
                 onTap: () => Get.toNamed(Routes.NOTIFICATION)),
+        20.height,
             MenuItem(
                 icon: Icons.info_outline,
                 title: 'عن التطبيق',
                 onTap: () => Get.toNamed(Routes.ABOUT)),
+            20.height,
+
             MenuItem(
               icon: Icons.dark_mode_outlined,
               title: 'وضع داكن',
@@ -66,6 +70,8 @@ class ProfileView extends GetView<HomeController> {
                     activeColor: AppColors.primary,
                   )),
             ),
+            20.height,
+
             MenuItem(
               icon: Icons.logout,
               title: 'تسجيل خروج',

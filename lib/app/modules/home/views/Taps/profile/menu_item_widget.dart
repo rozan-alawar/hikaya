@@ -35,7 +35,7 @@ class MenuItem extends StatelessWidget {
       ),
       title: AppText(
         text: title,
-        fontSize: 16,
+        fontSize: 18,
         color: textColor ,
       ),
       trailing: trailing,

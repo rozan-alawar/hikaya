@@ -1,9 +1,7 @@
-class CategoryHomeModel{
 
-  String imagePath;
-  String title;
-  CategoryHomeModel({
-    required this.imagePath,
-    required this.title,
-});
+class CategoryModel {
+  final String title;
+  final String image;
+
+  CategoryModel({required this.title, required this.image});
 }
