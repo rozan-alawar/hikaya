@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:hikaya/app/modules/home/views/Taps/main/main_view.dart';
+import 'package:hikaya/app/modules/home/views/Taps/main/article_webview.dart';
 
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
@@ -89,6 +90,10 @@ class AppPages {
       name: _Paths.NOTIFICATION,
       page: () => const NotificationView(),
       binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.ARTICLE_VIEW,
+      page: () => const ArticleWebView(),
     ),
   ];
 }

@@ -88,7 +88,7 @@ class HomeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final appService = Get.find<AppService>();
     return  InkWell(
-        onTap: () => Get.toNamed('/article-view', arguments: {'url': url}),
+        onTap: () => Get.toNamed(Routes.ARTICLE_VIEW, arguments: {'url': url}),
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -150,7 +150,7 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
               ),
-             16.height,
+              16.height,
               Container(
                 width: 120,
                 decoration: BoxDecoration(

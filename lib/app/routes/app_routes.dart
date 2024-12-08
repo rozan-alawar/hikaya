@@ -15,6 +15,7 @@ abstract class Routes {
   static const VERIFICATION = _Paths.VERIFICATION;
   static const ABOUT = _Paths.ABOUT;
   static const NOTIFICATION = _Paths.NOTIFICATION;
+  static const ARTICLE_VIEW = _Paths.ARTICLE_VIEW;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const GAME = '/game';
   static const ABOUT = '/about';
   static const NOTIFICATION = '/notification';
+  static const ARTICLE_VIEW = '/article-view';
 }
