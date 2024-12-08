@@ -1,25 +1,21 @@
 import 'package:get/get.dart';
+import 'package:hikaya/app/models/episode_model.dart';
 
 class CourseDetailsController extends GetxController {
   //TODO: Implement HomeController
 
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+
+  final currentTabIndex = 1.obs;
+  final selectedEpisodeIndex = 0.obs;
+
+  void selectEpisode(int index) {
+    selectedEpisodeIndex.value = index;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
+  void setTabIndex(int index) {
+    currentTabIndex.value = index;
   }
 
 
-  void increment() => count.value++;
 }

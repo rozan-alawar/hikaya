@@ -67,7 +67,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.COURSEDETAILSVIEW,
-      page: () => const CourseDetailsView(),
+      page: () =>  CourseDetailsView(),
       binding: CourseDetailsBinding(),
     ),
     GetPage(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
+import 'package:hikaya/app/data/dummy_data.dart';
 import 'package:hikaya/app/modules/home/controllers/courses_controller.dart';
 import 'package:hikaya/app/routes/app_pages.dart';
 
@@ -56,8 +57,7 @@ class CoursesView extends GetView<CoursesController> {
                       height: 400,
                       child:  PageView.builder(
                         padEnds: false,
-                        // pageSnapping: false,
-                        itemCount: 5,
+                        itemCount: AppDummyData.coursesData.length,
                         allowImplicitScrolling: true,
                         reverse: true,
                         controller: PageController(
@@ -67,7 +67,7 @@ class CoursesView extends GetView<CoursesController> {
 
                         itemBuilder: (context, index) => GestureDetector(
                           onTap: () {
-                            Get.toNamed(Routes.COURSEDETAILSVIEW);
+                            Get.toNamed(Routes.COURSEDETAILSVIEW, arguments: AppDummyData.coursesData[index],);
 
                           },
                           child:  Container(
@@ -75,11 +75,16 @@ class CoursesView extends GetView<CoursesController> {
                             width: 268,
                             // height: 384,
                             decoration: BoxDecoration(
-                                color: Colors.amber,
-                                borderRadius: BorderRadius.circular(20)
+                              color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.shade200
+                                  )
+                                ]
                             ),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
                               child:  Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -87,10 +92,11 @@ class CoursesView extends GetView<CoursesController> {
                                     height: 286,
                                     // width: 240,
                                     decoration: BoxDecoration(
+                                      image: DecorationImage(image: AssetImage(AppDummyData.coursesData[index].imageCoursePath),fit: BoxFit.fill),
                                       borderRadius: BorderRadius.circular(20),
-                                      color: Colors.redAccent,
-                                      // color: Colors.blue,
+
                                     ),
+
                                   ),
                                   11.ph(),
                                   Expanded(child: Container(
@@ -99,8 +105,8 @@ class CoursesView extends GetView<CoursesController> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        AppText(text: 'اسم الكورس :حكاية قدس', fontSize: 18),
-                                        AppText(text: 'عدد الفيديوهات : 13', fontSize: 18),
+                                        AppText(text: 'اسم الكورس :${AppDummyData.coursesData[index].courseName}', fontSize: 18),
+                                        AppText(text: 'عدد الفيديوهات : ${AppDummyData.coursesData[index].episodeModel.length}', fontSize: 18),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.end,
                                           children: [

@@ -13,6 +13,8 @@ import 'package:hikaya/app/modules/home/views/Taps/profile/profile_view.dart';
 import 'package:hikaya/app/routes/app_pages.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -113,7 +115,7 @@ class HomeWidget extends StatelessWidget {
                     CustomText(
                       alignment: Alignment.topRight,
                       title,
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       maxLines: 2,
                     ),
