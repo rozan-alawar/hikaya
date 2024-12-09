@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/models/episode_model.dart';
 
@@ -10,6 +11,7 @@ class CourseDetailsController extends GetxController {
   final selectedEpisodeIndex = 0.obs;
 
   void selectEpisode(int index) {
+    debugPrint(index.toString());
     selectedEpisodeIndex.value = index;
   }
 
