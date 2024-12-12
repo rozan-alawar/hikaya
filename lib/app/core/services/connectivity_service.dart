@@ -1,4 +1,3 @@
-// lib/app/core/services/connectivity_service.dart
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
@@ -18,7 +17,7 @@ class ConnectivityService extends GetxService {
 
   Future<void> _initConnectivity() async {
     try {
-      ConnectivityResult result = (await _connectivity.checkConnectivity()) as ConnectivityResult;
+      ConnectivityResult result = await _connectivity.checkConnectivity(); // Remove casting
       _updateConnectionStatus(result);
     } catch (e) {
       debugPrint('Connectivity initialization error: $e');
@@ -29,9 +28,7 @@ class ConnectivityService extends GetxService {
   void _startListening() {
     try {
       _connectivity.onConnectivityChanged.listen(
-            (ConnectivityResult result) {
-          _updateConnectionStatus(result);
-        } as void Function(List<ConnectivityResult> event)?,
+            (ConnectivityResult result) => _updateConnectionStatus(result), // Fixed listener
         onError: (error) {
           debugPrint('Connectivity monitoring error: $error');
           isConnected.value = false;
@@ -54,7 +51,7 @@ class ConnectivityService extends GetxService {
 
   Future<bool> checkConnection() async {
     try {
-      final ConnectivityResult result = (await _connectivity.checkConnectivity()) as ConnectivityResult;
+      final result = await _connectivity.checkConnectivity(); // Remove casting
       return result != ConnectivityResult.none;
     } catch (e) {
       debugPrint('Check connection error: $e');

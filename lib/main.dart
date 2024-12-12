@@ -30,23 +30,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appService = Get.find<AppService>();
-    return Obx(() => GetMaterialApp(
-      title: 'حكاية',
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-      locale: const Locale('ar'),
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: appService.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
-      // supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: const [
-        // AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-        ),
+    return Obx(() => SafeArea(
+      child: GetMaterialApp(
+        title: 'حكاية',
+        debugShowCheckedModeBanner: false,
+        // initialRoute: AppPages.INITIAL,
+        initialRoute: Routes.HOME,
+        getPages: AppPages.routes,
+        locale: const Locale('ar'),
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: appService.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
+        // supportedLocales: AppLocalizations.supportedLocales,
+        localizationsDelegates: const [
+          // AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+          ),
+    ),
     );
   }
 }

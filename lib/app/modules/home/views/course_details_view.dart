@@ -48,7 +48,7 @@ class CourseContent extends StatelessWidget {
       children: [
         const BackButton(),
         16.ph(),
-        CourseHeader(),
+        const CourseHeader(),
         16.ph(),
         CourseInfo(courseModel: courseModel),
         27.ph(),

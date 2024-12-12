@@ -20,49 +20,44 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             20.height,
-            Column(
+            AppText(
+              text:
+                  ' ابدأ الآن واكتشف تجربة تعليمية ممتعة دليلك بين يديك في مكان واحد',
+              fontSize: 25,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                AppText(
-                  text:
-                      ' ابدأ الآن واكتشف تجربة تعليمية ممتعة دليلك بين يديك في مكان واحد',
-                  fontSize: 25,
+                Image.asset(
+                  'assets/images/line_under_text.png',
+                  height: 10,
+                  width: 100,
+                  fit: BoxFit.cover,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Image.asset(
-                      'assets/images/line_under_text.png',
-                      height: 10,
-                      width: 100,
-                      fit: BoxFit.cover,
-                    ),
-                    125.width,
+                125.width,
 
-                  ],
-                )
               ],
             ),
             40.height,
-            Expanded(
-              child: ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) => HomeWidget(
-                  image: AppDummyData.HomeData[index].imagePath,
-                  title: AppDummyData.HomeData[index].title,
-                  by: AppDummyData.HomeData[index].by,
-                  url: AppDummyData.HomeData[index].url,
-                  date: AppDummyData.HomeData[index].date,
-                ),
-                separatorBuilder: (context, index) => 30.height,
-                itemCount: AppDummyData.HomeData.length,
+            ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) => HomeWidget(
+                image: AppDummyData.HomeData[index].imagePath,
+                title: AppDummyData.HomeData[index].title,
+                by: AppDummyData.HomeData[index].by,
+                url: AppDummyData.HomeData[index].url,
+                date: AppDummyData.HomeData[index].date,
               ),
+              separatorBuilder: (context, index) => 30.height,
+              itemCount: AppDummyData.HomeData.length,
             ),
           ],
         ),
@@ -92,6 +87,7 @@ class HomeWidget extends StatelessWidget {
     final appService = Get.find<AppService>();
     return  InkWell(
         onTap: ()async{
+          debugPrint((await ConnectivityService.to.checkConnection()).toString());
            if (!await ConnectivityService.to.checkConnection()) {
           SnackbarUtil.showError(
           'No Internet Connection',
