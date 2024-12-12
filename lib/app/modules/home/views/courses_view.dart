@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/data/dummy_data.dart';
+import 'package:hikaya/app/modules/home/controllers/course_details_controller.dart';
 import 'package:hikaya/app/modules/home/controllers/courses_controller.dart';
 import 'package:hikaya/app/routes/app_pages.dart';
 
@@ -67,8 +68,9 @@ class CoursesView extends GetView<CoursesController> {
 
                         itemBuilder: (context, index) => GestureDetector(
                           onTap: () {
-                            Get.toNamed(Routes.COURSEDETAILSVIEW, arguments: AppDummyData.coursesData[index],);
-
+                            // controller.selectCourseModel(controller.courseModel.value[index]);
+                            // Get.toNamed(Routes.COURSEDETAILSVIEW, arguments: controller.courseModel.value[index]);
+                            controller.selectCourseModel(controller.courseModel.value[index]);
                           },
                           child:  Container(
                             margin: const EdgeInsets.symmetric(horizontal: 20),

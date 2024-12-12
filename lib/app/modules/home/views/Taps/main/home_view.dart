@@ -12,6 +12,9 @@ import 'package:hikaya/app/modules/home/controllers/home_controller.dart';
 import 'package:hikaya/app/modules/home/views/Taps/profile/profile_view.dart';
 import 'package:hikaya/app/routes/app_pages.dart';
 
+import '../../../../../core/services/connectivity_service.dart';
+import '../../../../../core/utils/snackbar_util.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -88,7 +91,16 @@ class HomeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final appService = Get.find<AppService>();
     return  InkWell(
-        onTap: () => Get.toNamed(Routes.ARTICLE_VIEW, arguments: {'url': url}),
+        onTap: ()async{
+           if (!await ConnectivityService.to.checkConnection()) {
+          SnackbarUtil.showError(
+          'No Internet Connection',
+          'Please check your network connection and try again.'
+          );
+          return;
+          }
+           Get.toNamed(Routes.ARTICLE_VIEW, arguments: {'url': url});
+        },
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
