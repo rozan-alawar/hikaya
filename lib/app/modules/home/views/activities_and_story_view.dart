@@ -102,11 +102,11 @@ class ActivitiesAndStoryView extends GetView<ActivitiesAndStoryController> {
             children: [
               const _HeaderText(text: 'قصص تفاعلية'),
               const SizedBox(height: 32),
-              _InteractiveStoriesList(onTap: launchURL,),
+              _InteractiveStoriesList(onTap: URLLauncherUtil.launchURL,),
               const SizedBox(height: 8),
               const _HeaderText(text: 'مرفقات أنشطة للطفل'),
               const SizedBox(height: 16),
-               _ActivitiesList(onTap: launchURL,),
+               _ActivitiesList(onTap: URLLauncherUtil.launchURL,),
             ],
           ),
         ),

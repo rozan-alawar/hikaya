@@ -4,7 +4,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/services/app_service.dart';
 import 'package:hikaya/app/core/utils/app_theme.dart';
+import 'package:hikaya/app/modules/home/controllers/course_details_controller.dart';
+import 'package:hikaya/app/modules/home/controllers/courses_controller.dart';
 import 'package:hikaya/firebase_options.dart';
+import 'app/core/services/connectivity_service.dart';
 import 'app/routes/app_pages.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +17,10 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await Get.putAsync(() => AppService().init(), permanent: true);
+  Get.put(CoursesController());
+  Get.put(ConnectivityService());
+
+  Get.put(CourseDetailsController());
   runApp(const MyApp());
 }
 
