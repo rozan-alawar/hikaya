@@ -1,8 +1,10 @@
 import 'package:hikaya/app/models/category_home_model.dart';
 import 'package:hikaya/app/models/episode_model.dart';
 
+import '../models/activity_model.dart';
 import '../models/course_model.dart';
 import '../models/home_model.dart';
+import '../models/story_model.dart';
 
 class AppDummyData{
   static final List<CategoryModel> categoryHomeData = [
@@ -41,6 +43,19 @@ class AppDummyData{
      ]
      // imagePath: ,
    ),
+
+ ];
+
+ static List<StoryModel> storiesData=[
+   StoryModel(url: 'https://www.youtube.com/watch?v=gnb756N6mXs&t=22s', title: 'الشيخ ياسر والضيف الغدار', imagePath: 'assets/images/story_image_1.png'),
+   StoryModel(url: 'https://www.youtube.com/watch?v=kXLbMw-sT5o', title: 'قصة فلسطين للأطفال', imagePath: 'assets/images/story_image_2.png'),
+
+ ];
+
+ static List<ActivityModel> activitiesData=[
+   ActivityModel(url: 'https://bit.ly/3UUOnMX', title: 'مذكرات تسالي وتلوين', imagePath: 'assets/images/activity_image_1.png'),
+   ActivityModel(url: 'https://bit.ly/3ZbYm3c', title: 'تلوين الأقصى للأطفال', imagePath: 'assets/images/activity_image_2.png'),
+   ActivityModel(url: 'https://bit.ly/4fQiGfO', title: 'حي الشيخ جراح', imagePath: 'assets/images/activity_image_3.png'),
 
  ];
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
-import 'package:hikaya/app/core/widgets/back_button.dart';
 import 'package:hikaya/app/modules/home/controllers/course_details_controller.dart';
 
 import '../../../core/widgets/app_text.dart';
@@ -15,23 +14,25 @@ class CourseDetailsView extends GetView<CourseDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: BackButtonWidget(),),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
-          child: Obx(() => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-
-              _buildCourseHeader(),
-              16.ph(),
-              _buildCourseInfo(),
-              27.ph(),
-              _buildActionButtons(),
-              18.ph(),
-              _buildTabContent(),
-            ],
-          ),)
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+            child: Obx(() => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildBackButton(),
+                16.ph(),
+                _buildCourseHeader(),
+                16.ph(),
+                _buildCourseInfo(),
+                27.ph(),
+                _buildActionButtons(),
+                18.ph(),
+                _buildTabContent(),
+              ],
+            ),)
+          ),
         ),
       ),
     );
