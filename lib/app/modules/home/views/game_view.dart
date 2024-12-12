@@ -23,6 +23,7 @@ class GameView extends GetView<ActivitiesAndStoryController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              20.height,
               Image.asset(
                 'assets/images/game1.png',
                width: 230,
@@ -32,7 +33,7 @@ class GameView extends GetView<ActivitiesAndStoryController> {
               20.ph(),
               AppText(
                 text: 'تصميم: تُراب حاضنة الهوية الفلسطينية ',
-                fontSize: 16,
+                fontSize: 14,
                 color: AppColors.textLight,              ),
               20.ph(),
               Row(
@@ -40,7 +41,7 @@ class GameView extends GetView<ActivitiesAndStoryController> {
                 children: [
                   AppText(
                     text: 'وصف اللعبة:',
-                    fontSize: 22,
+                    fontSize: 20,
                     color: AppColors.primary,
                   ),
                 ],
@@ -49,7 +50,7 @@ class GameView extends GetView<ActivitiesAndStoryController> {
               AppText(
                 text:
                     'لعبة افتراضيّة تفاعليّة تروي قصة حسن، اللاجئ الفلسطينيّ، وتحكي من خلالها حكاية التغريبة وتهجير الفلسطينيّين. عندما تلعب/ين هذه اللعبة سيمكنك الخوض في جميع مراحل حياة حسن ومحطّات التهجير، وستعيش/ين التجربة في وجداتك وتحفظها لتبقى داخلك وتفوز فيها، وبذلك سوف تحيا الرواية وتنجو الحقيقة.',
-                fontSize: 16,
+                fontSize: 14,
 
                 color: AppColors.textLight,
               ),
