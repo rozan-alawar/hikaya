@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
+import 'package:hikaya/app/core/services/connectivity_service.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/data/dummy_data.dart';
 import 'package:hikaya/app/models/activity_model.dart';
@@ -158,7 +159,18 @@ class _ActivitiesList extends StatelessWidget {
         itemCount: AppDummyData.activitiesData.length,
         itemBuilder: (context, index) => _ActivityCard(
           activity: AppDummyData.activitiesData[index],
-          onTap: ()async => await onTap(AppDummyData.activitiesData[index].url),
+          onTap: () async {
+            debugPrint((await ConnectivityService.to.checkConnection()).toString());
+          };
+    if (!await ConnectivityService.to.checkConnection()) {
+    SnackbarUtil.showError(
+    'No Internet Connection',
+    'Please check your network connection and try again.'
+    );
+    return;
+    }
+    Get.toNamed(Routes.ARTICLE_VIEW, arguments: {'url': url});
+    },
         ),
       ),
     );
