@@ -20,14 +20,14 @@ class BackButtonWidget extends StatelessWidget {
     return   Padding(
         padding: EdgeInsets.only(right: 8.0),
       child: Container(
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: appService.isDarkMode.value ? AppColors.white.withOpacity(0.2) : AppColors.white.withOpacity(0.1),
+          color:appService.isDarkMode.value ? AppColors.flagBlack: AppColors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.06),
+              color: Colors.black.withOpacity(0.16),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),

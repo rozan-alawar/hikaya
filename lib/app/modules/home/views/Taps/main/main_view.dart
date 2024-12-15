@@ -33,11 +33,11 @@ class HomeView extends GetView<HomeController> {
                 height: 40,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: appService.isDarkMode.value ? AppColors.white.withOpacity(0.2) : AppColors.white.withOpacity(0.1),
+                  color: appService.isDarkMode.value ? AppColors.flagBlack.withOpacity(0.8) : AppColors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 8,
+                      color: Colors.black.withOpacity(0.16),
+                      blurRadius:12,
                       offset: const Offset(0, 2),
                     ),
                   ],
@@ -59,7 +59,7 @@ class HomeView extends GetView<HomeController> {
             centerTitle: true,
             title: AppText(
               text: controller.getAppBarText(controller.currentIndex.value),
-              fontSize: 20,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),

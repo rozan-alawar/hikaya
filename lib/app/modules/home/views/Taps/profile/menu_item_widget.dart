@@ -31,11 +31,11 @@ class MenuItem extends StatelessWidget {
       leading: Icon(
         icon,
         color: iconColor,
-        size: 24,
+        size: 20,
       ),
       title: AppText(
         text: title,
-        fontSize: 18,
+        fontSize: 16,
         color: textColor ,
       ),
       trailing: trailing,

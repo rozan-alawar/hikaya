@@ -14,6 +14,8 @@ class AppTheme {
         error: AppColors.error,
       ),
       appBarTheme: AppBarTheme(
+        toolbarHeight: 70,
+
         backgroundColor: AppColors.background,
         elevation: 0,
         centerTitle: true,

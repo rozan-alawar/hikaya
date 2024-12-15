@@ -18,11 +18,11 @@ class ProfileView extends GetView<HomeController> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            // Profile Avatar
+            10.height,
             Center(
               child: Container(
-                width: 100,
-                height: 100,
+                width: 85,
+                height: 85,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
@@ -39,27 +39,27 @@ class ProfileView extends GetView<HomeController> {
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            16.height,
             // User Name
             CustomText(
               alignment: Alignment.center,
               controller.user?.displayName ?? "نور محمد",
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
 
-            const SizedBox(height: 32),
+         40.height,
             // Menu Items
             MenuItem(
                 icon: Icons.notifications_outlined,
                 title: 'الإشعارات',
                 onTap: () => Get.toNamed(Routes.NOTIFICATION)),
-        20.height,
+        10.height,
             MenuItem(
                 icon: Icons.info_outline,
                 title: 'عن التطبيق',
                 onTap: () => Get.toNamed(Routes.ABOUT)),
-            20.height,
+            10.height,
 
             MenuItem(
               icon: Icons.dark_mode_outlined,
@@ -70,7 +70,7 @@ class ProfileView extends GetView<HomeController> {
                     activeColor: AppColors.primary,
                   )),
             ),
-            20.height,
+            10.height,
 
             MenuItem(
               icon: Icons.logout,

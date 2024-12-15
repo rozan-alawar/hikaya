@@ -27,13 +27,17 @@ class NotificationView extends GetView<NotificationController> {
         ),
         leading: BackButtonWidget(),
         actions: [
-          TextButton(
+          Obx(
+          () =>
+        controller.notifications.isNotEmpty
+        ?TextButton(
             onPressed: () => controller.clearAllNotifications(),
             child: CustomText(
               'حذف الكل',
               fontSize: 20,
               color: appService.isDarkMode.value ? AppColors.flagGreen : AppColors.primary
             ),
+          ):SizedBox(width: 50,),
           ),
         ],
       ),
@@ -72,15 +76,18 @@ class NotificationView extends GetView<NotificationController> {
                         ],
                       ),
             )
-            : ListView.builder(
-          itemCount: controller.notifications.length,
-          itemBuilder: (context, index) {
-            return NotificationItem(
-              notification: controller.notifications[index],
-              isNew: index == 0,
-            );
-          },
-        ),
+            : Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: ListView.builder(
+                        itemCount: controller.notifications.length,
+                        itemBuilder: (context, index) {
+              return NotificationItem(
+                notification: controller.notifications[index],
+                isNew: index == 0,
+              );
+                        },
+                      ),
+            ),
       ),
     );
   }

@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
             AppText(
               text:
                   ' ابدأ الآن واكتشف تجربة تعليمية ممتعة دليلك بين يديك في مكان واحد',
-              fontSize: 25,
+              fontSize: 24,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                   width: 100,
                   fit: BoxFit.cover,
                 ),
-                125.width,
+                190.width,
 
               ],
             ),
@@ -100,11 +100,11 @@ class HomeWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: appService.isDarkMode.value ? AppColors.white.withOpacity(.1) : AppColors.flagBlack.withOpacity(0.1) ,
+          color: appService.isDarkMode.value ? AppColors.flagBlack: AppColors.white ,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.06),
+              color: Colors.black.withOpacity(0.4),
               blurRadius: 10,
               offset: const Offset(0, 2),
             ),
@@ -130,13 +130,13 @@ class HomeWidget extends StatelessWidget {
                     const SizedBox(height: 8),
                     CustomText(
                       'بقلم:',
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.grey,
                     ),
                     const SizedBox(height: 4),
                     CustomText(
                       url,
-                      fontSize: 16,
+                      fontSize: 14,
                       color: AppColors.primary,
                     ),
                     const SizedBox(height: 8),
@@ -144,13 +144,13 @@ class HomeWidget extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.calendar_today,
-                          size: 16,
+                          size: 13,
                           color: Colors.grey,
                         ),
                         const SizedBox(width: 4),
                         CustomText(
                           date,
-                          fontSize: 16,
+                          fontSize: 13,
                           color: Colors.grey,
                         ),
                       ],
