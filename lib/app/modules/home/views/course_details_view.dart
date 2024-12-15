@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
 import 'package:hikaya/app/core/utils/lunch_urls.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
+import 'package:hikaya/app/core/widgets/back_button.dart';
 import 'package:hikaya/app/models/course_model.dart';
 import '../../../models/episode_model.dart';
 import '../controllers/course_details_controller.dart';
@@ -16,14 +17,17 @@ class CourseDetailsView extends GetView<CourseDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
-            child: CourseContent(
-              courseModel: courseModel,
-              controller: controller,
-            ),
+      appBar: AppBar(
+        leading: BackButtonWidget(),
+        title: CourseHeader(),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+          child: CourseContent(
+            courseModel: courseModel,
+            controller: controller,
           ),
         ),
       ),
@@ -46,9 +50,8 @@ class CourseContent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const BackButton(),
-        16.ph(),
-        const CourseHeader(),
+        //
+        // const CourseHeader(),
         16.ph(),
         CourseInfo(courseModel: courseModel),
         27.ph(),
@@ -62,21 +65,21 @@ class CourseContent extends StatelessWidget {
     );
   }
 }
-
-class BackButton extends StatelessWidget {
-  const BackButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: IconButton(
-        icon: const Icon(Icons.arrow_back_ios),
-        onPressed: () => Get.back(),
-      ),
-    );
-  }
-}
+//
+// class BackButton extends StatelessWidget {
+//   const BackButton({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Align(
+//       alignment: Alignment.centerRight,
+//       child: IconButton(
+//         icon: const Icon(Icons.arrow_back_ios),
+//         onPressed: () => Get.back(),
+//       ),
+//     );
+//   }
+// }
 
 class CourseHeader extends GetView<CourseDetailsController> {
 

@@ -4,6 +4,7 @@ import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
 import 'package:hikaya/app/core/services/connectivity_service.dart';
 import 'package:hikaya/app/core/utils/snackbar_util.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
+import 'package:hikaya/app/core/widgets/back_button.dart';
 import 'package:hikaya/app/data/dummy_data.dart';
 import 'package:hikaya/app/models/activity_model.dart';
 import 'package:hikaya/app/routes/app_pages.dart';
@@ -21,13 +22,14 @@ class ActivitiesAndStoryView extends GetView<ActivitiesAndStoryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(leading: BackButtonWidget(),
+      title: _HeaderText(text: 'قصص تفاعلية'),centerTitle: true,),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const _HeaderText(text: 'قصص تفاعلية'),
+
               const SizedBox(height: 32),
               _InteractiveStoriesList(onTap: URLLauncherUtil.launchURL,),
               const SizedBox(height: 8),
