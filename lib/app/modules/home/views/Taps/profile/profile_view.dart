@@ -75,7 +75,7 @@ class ProfileView extends GetView<HomeController> {
             MenuItem(
               icon: Icons.logout,
               title: 'تسجيل خروج',
-              onTap: () => controller.signOut(),
+              onTap: () async=>await controller.signOut(),
               textColor: Colors.red,
               iconColor: Colors.red,
             ),

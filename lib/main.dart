@@ -8,6 +8,7 @@ import 'package:hikaya/app/modules/home/controllers/course_details_controller.da
 import 'package:hikaya/app/modules/home/controllers/courses_controller.dart';
 import 'package:hikaya/firebase_options.dart';
 import 'app/core/services/connectivity_service.dart';
+import 'app/modules/auth/controllers/auth_controller.dart';
 import 'app/routes/app_pages.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,7 @@ void main() async{
   await Get.putAsync(() => AppService().init(), permanent: true);
   Get.put(CoursesController());
   Get.put(ConnectivityService());
+  Get.put(AuthController());
 
   Get.put(CourseDetailsController());
   runApp(const MyApp());
@@ -34,8 +36,8 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         title: 'حكاية',
         debugShowCheckedModeBanner: false,
-        // initialRoute: AppPages.INITIAL,
-        initialRoute: Routes.HOME,
+        initialRoute: AppPages.INITIAL,
+        // initialRoute: Routes.SPLASH,
         getPages: AppPages.routes,
         locale: const Locale('ar'),
         theme: AppTheme.lightTheme,

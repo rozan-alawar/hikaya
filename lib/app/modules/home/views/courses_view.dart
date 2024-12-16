@@ -51,10 +51,7 @@ class CoursesView extends GetView<CoursesController> {
                   width: double.infinity,
                   child: GestureDetector(
                     onTap: () {
-                      Get.toNamed(
-                        Routes.COURSEDETAILSVIEW,
-                        arguments: AppDummyData.coursesData[index],
-                      );
+                      controller.selectCourseModel(controller.courseModel.value[index]);
                     },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
