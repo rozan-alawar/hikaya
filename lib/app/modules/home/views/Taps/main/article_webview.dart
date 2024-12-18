@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/core/widgets/back_button.dart';
 import 'package:hikaya/app/core/widgets/custom_text.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -18,7 +20,12 @@ class _ArticleWebViewState extends State<ArticleWebView> {
   @override
   void initState() {
     super.initState();
-    final String url = Get.arguments['url'] as String;
+    String urlString = Get.arguments['url'] as String;
+    if (!urlString.startsWith('http://') && !urlString.startsWith('https://')) {
+      urlString = 'https://$urlString';
+    }
+    final String url =urlString ;
+    debugPrint('url $url');
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
@@ -44,11 +51,12 @@ class _ArticleWebViewState extends State<ArticleWebView> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const CustomText(
-          'المقال',
-          fontSize: 20,
+        toolbarHeight: 70,
+        title:  AppText(text: 'المقال',
+          fontSize: 18.sp,
           fontWeight: FontWeight.bold,
         ),
+
         centerTitle: true,
         leading: const BackButtonWidget(),
         actions: [

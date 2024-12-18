@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 // import '../../../../main.dar';
 
 import 'package:get/get.dart';
+import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/core/widgets/custom_button.dart';
@@ -21,10 +23,6 @@ class IntroView extends GetView<IntroController> {
       body: SafeArea(
         child: Stack(
           children: [
-            // Skip button
-
-
-            // PageView
             PageView(
               controller: pageController,
               onPageChanged: (index) {
@@ -35,8 +33,8 @@ class IntroView extends GetView<IntroController> {
                   .toList(),
             ),
             Positioned(
-              right: 20,
-              top: 10,
+              right: 20.w,
+              top: 10.h,
               child: Obx(
                     () => TextButton(
                 onPressed: () => Get.offAllNamed('/auth'),
@@ -50,9 +48,9 @@ class IntroView extends GetView<IntroController> {
             ),
             // Bottom indicators and button
             Positioned(
-              left: 20,
-              right: 20,
-              bottom: 30,
+              left: 20.w,
+              right: 20.w,
+              bottom: 30.h,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -65,20 +63,20 @@ class IntroView extends GetView<IntroController> {
                         () => Container(
                           margin: const EdgeInsets.symmetric(horizontal: 4),
                           width: controller.selectedPageIndex.value == index
-                              ? 35
-                              : 12,
-                          height: 7,
+                              ? 35.w
+                              : 12.w,
+                          height: 7.h,
                           decoration: BoxDecoration(
                             color: controller.selectedPageIndex.value == index
                                 ? const Color(0xFF1B5E20)
                                 : Colors.grey.shade300,
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  20.height,
                   // Next/Start button
                   Obx(
                     () => CustomButton(

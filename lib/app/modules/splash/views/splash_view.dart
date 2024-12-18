@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
@@ -14,11 +16,11 @@ class SplashView extends GetView<SplashController> {
           children: [
             Image.asset(
               'assets/images/logo.png',
-              width: 367,
-              height: 367,
+              width: 367.w,
+              height: 367.h,
               fit: BoxFit.contain,
             ),
-            const SizedBox(height: 20),
+            20.height,
           ],
         ),
       ),

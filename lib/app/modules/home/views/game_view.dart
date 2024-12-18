@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
-import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/core/widgets/back_button.dart';
-import 'package:hikaya/app/core/widgets/custom_text.dart';
 
 import '../controllers/activities_and_story_controller.dart';
 
@@ -16,29 +15,31 @@ class GameView extends GetView<ActivitiesAndStoryController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
-        leading: BackButtonWidget(),
-        title:AppText(text: 'لعبة التغريبة',fontSize: 24,) ,
+        leading: const BackButtonWidget(),
+      title:   AppText(
+          text: 'لعبة التغريبة',
+          fontSize: 18.sp,
+                 ),
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               20.height,
               Image.asset(
                 'assets/images/game1.png',
-               width: 230,
-                height: 230,
+                width: 230.w,
+                height: 230.h,
                 fit: BoxFit.cover,
               ),
-              20.ph(),
+              20.height,
               AppText(
                 text: 'تصميم: تُراب حاضنة الهوية الفلسطينية ',
                 fontSize: 14,
                 color: AppColors.textLight,              ),
-              20.ph(),
+              20.height,
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -49,10 +50,10 @@ class GameView extends GetView<ActivitiesAndStoryController> {
                   ),
                 ],
               ),
-              11.ph(),
+              11.height,
               AppText(
                 text:
-                    'لعبة افتراضيّة تفاعليّة تروي قصة حسن، اللاجئ الفلسطينيّ، وتحكي من خلالها حكاية التغريبة وتهجير الفلسطينيّين. عندما تلعب/ين هذه اللعبة سيمكنك الخوض في جميع مراحل حياة حسن ومحطّات التهجير، وستعيش/ين التجربة في وجداتك وتحفظها لتبقى داخلك وتفوز فيها، وبذلك سوف تحيا الرواية وتنجو الحقيقة.',
+                'لعبة افتراضيّة تفاعليّة تروي قصة حسن، اللاجئ الفلسطينيّ، وتحكي من خلالها حكاية التغريبة وتهجير الفلسطينيّين. عندما تلعب/ين هذه اللعبة سيمكنك الخوض في جميع مراحل حياة حسن ومحطّات التهجير، وستعيش/ين التجربة في وجداتك وتحفظها لتبقى داخلك وتفوز فيها، وبذلك سوف تحيا الرواية وتنجو الحقيقة.',
                 fontSize: 14,
 
                 color: AppColors.textLight,
@@ -70,12 +71,15 @@ class GameView extends GetView<ActivitiesAndStoryController> {
                         color: AppColors.primary,
                       ),
                       10.height,
-                      Image.asset(
-                        'assets/images/playstore.jpeg',
-                        width: 150,
-                        height: 150,
-                        fit: BoxFit.cover,
-                      ),
+                     Container(
+                       width: 150,
+                       height: 150,
+                       child:  Image.asset(
+                         'assets/images/playstore.jpeg',
+
+                         fit: BoxFit.cover,
+                       ),
+                     )
                     ],
                   ),
                   Column(
@@ -87,12 +91,16 @@ class GameView extends GetView<ActivitiesAndStoryController> {
                         color: AppColors.primary,
                       ),
                       10.height,
-                      Image.asset(
+                    Container(
+                      width: 150,
+                      height: 150,
+                      child:   Image.asset(
                         'assets/images/appstore.jpeg',
-                        width: 150,
-                        height: 150,
+                        width: 150.w,
+                        height: 150.h,
                         fit: BoxFit.cover,
                       ),
+                    )
                     ],
                   )
                 ],

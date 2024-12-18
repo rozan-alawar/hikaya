@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/services/app_service.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
-import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/core/widgets/back_button.dart';
 import 'package:hikaya/app/core/widgets/custom_text.dart';
 import 'package:hikaya/app/models/notification_model.dart';
@@ -20,12 +20,13 @@ class NotificationView extends GetView<NotificationController> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: AppText(
-text:           'الإشعارات',
-          fontSize: 20,
+        title: const CustomText(
+          alignment: Alignment.center,
+          'الإشعارات',
+          fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
-        leading: BackButtonWidget(),
+        leading: const BackButtonWidget(),
         actions: [
           Obx(
           () =>
@@ -37,7 +38,7 @@ text:           'الإشعارات',
               fontSize: 20,
               color: appService.isDarkMode.value ? AppColors.flagGreen : AppColors.primary
             ),
-          ):SizedBox(),
+          ):50.width,
           ),
         ],
       ),
@@ -71,13 +72,13 @@ text:           'الإشعارات',
                     ? Colors.grey[600]
                     : Colors.grey[400],
               ),
-              const SizedBox(height: 16),
+                          16.height,
 
                         ],
                       ),
             )
             : Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+              padding:  EdgeInsets.only(top: 20.0.h),
               child: ListView.builder(
                         itemCount: controller.notifications.length,
                         itemBuilder: (context, index) {

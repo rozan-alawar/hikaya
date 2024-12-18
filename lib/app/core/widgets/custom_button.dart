@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   final Widget widget;
@@ -27,11 +28,11 @@ class CustomButton extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: width ?? double.infinity,
-        height: height ?? 60,
+        width: width ?? double.infinity.w,
+        height: height ?? 60.h,
         decoration: BoxDecoration(
           color: backgraoundColor,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 4),
