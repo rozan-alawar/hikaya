@@ -6,6 +6,7 @@ import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
 import 'package:hikaya/app/core/utils/lunch_urls.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
+import 'package:hikaya/app/core/widgets/back_button.dart';
 import 'package:hikaya/app/models/course_model.dart';
 import '../../../models/episode_model.dart';
 import '../controllers/course_details_controller.dart';
@@ -18,6 +19,9 @@ class CourseDetailsView extends GetView<CourseDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(toolbarHeight: 70,
+      leading: BackButtonWidget(),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -48,8 +52,7 @@ class CourseContent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const BackButton(),
-        16.height,
+
         const CourseHeader(),
         16.height,
         CourseInfo(courseModel: courseModel),
@@ -65,20 +68,6 @@ class CourseContent extends StatelessWidget {
   }
 }
 
-class BackButton extends StatelessWidget {
-  const BackButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: IconButton(
-        icon: const Icon(Icons.arrow_back_ios),
-        onPressed: () => Get.back(),
-      ),
-    );
-  }
-}
 
 class CourseHeader extends GetView<CourseDetailsController> {
 
