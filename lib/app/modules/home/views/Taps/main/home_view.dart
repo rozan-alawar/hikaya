@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding:  EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,8 +38,8 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/images/line_under_text.png',
-                  height: 10,
-                  width: 100,
+                  height: 10.h,
+                  width: 100.w,
                   fit: BoxFit.cover,
                 ),
                 190.width,
@@ -87,7 +88,7 @@ class HomeWidget extends StatelessWidget {
     final appService = Get.find<AppService>();
     return  InkWell(
         onTap: ()async{
-          debugPrint((await ConnectivityService.to.checkConnection()).toString());
+
            if (!await ConnectivityService.to.checkConnection()) {
           SnackbarUtil.showError(
           'No Internet Connection',
@@ -101,11 +102,11 @@ class HomeWidget extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: appService.isDarkMode.value ? AppColors.flagBlack: AppColors.white ,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.4),
-              blurRadius: 10,
+              blurRadius: 10.r,
               offset: const Offset(0, 2),
             ),
           ],
@@ -115,39 +116,37 @@ class HomeWidget extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomText(
-                      alignment: Alignment.topRight,
                       title,
                       fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      maxLines: 2,
+                      // maxLines: 2,
                     ),
-                    const SizedBox(height: 8),
-                    CustomText(
+                    8.height,
+                    const CustomText(
                       'بقلم:',
                       fontSize: 14,
                       color: Colors.grey,
                     ),
-                    const SizedBox(height: 4),
+                    4.height,
                     CustomText(
                       url,
                       fontSize: 14,
                       color: AppColors.primary,
                     ),
-                    const SizedBox(height: 8),
+                    8.height,
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.calendar_today,
                           size: 13,
                           color: Colors.grey,
                         ),
-                        const SizedBox(width: 4),
+                        4.width,
                         CustomText(
                           date,
                           fontSize: 13,
@@ -158,17 +157,20 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              16.height,
-              Container(
-                width: 120,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  image: DecorationImage(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
+              // 16.width,
+              Expanded(
+                flex: 1,
+                child: Container(
+                  width: 120.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.r),
+                    image: DecorationImage(
+                      image: AssetImage(image),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ),

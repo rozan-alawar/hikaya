@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -57,14 +58,14 @@ class CustomTextField extends StatelessWidget {
         maxLines: multiLines! ? 3 : 1,
         inputFormatters: inputFormater,
         obscureText: obscureText,
-        style: textStyle ?? const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        style: textStyle ??  TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
         keyboardType: keyboardType,
         onTap: onTap ?? () {},
         onFieldSubmitted: onFieldSubmitted ?? (v) {},
         decoration: InputDecoration(
           isDense: true,
           prefixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
             child: prefixIcon,
           ),
           helperText: ' ',
@@ -73,12 +74,12 @@ class CustomTextField extends StatelessWidget {
           fillColor: fillColor,
           hintStyle: hintStyle ??
               TextStyle(
-                fontSize: 14
+                fontSize: 14.sp
               ),
           filled: true,
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: AppColors.transparent),
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15.r),
           ),
 
           focusedBorder: OutlineInputBorder(

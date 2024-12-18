@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
 import 'package:hikaya/app/core/services/connectivity_service.dart';
 import 'package:hikaya/app/core/utils/snackbar_util.dart';
@@ -26,15 +28,14 @@ class ActivitiesAndStoryView extends GetView<ActivitiesAndStoryController> {
       title: _HeaderText(text: 'قصص تفاعلية'),centerTitle: true,),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding:  EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             children: [
-
-              const SizedBox(height: 32),
+              32.height,
               _InteractiveStoriesList(onTap: URLLauncherUtil.launchURL,),
-              const SizedBox(height: 8),
+              8.height,
               const _HeaderText(text: 'مرفقات أنشطة للطفل'),
-              const SizedBox(height: 16),
+              16.height,
                _ActivitiesList(onTap: URLLauncherUtil.launchURL,),
             ],
           ),
@@ -63,12 +64,12 @@ class _InteractiveStoriesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 238,
+      height: 238.h,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: AppDummyData.storiesData.length,
         reverse: true,
-        separatorBuilder: (context, index) => 14.pw(),
+        separatorBuilder: (context, index) => 14.width,
         itemBuilder: (context, index) => _StoryCard(
           story: AppDummyData.storiesData[index],
           onTap: () => onTap(AppDummyData.storiesData[index].url),
@@ -92,17 +93,17 @@ class _StoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 161,
-        height: 228,
+        width: 161.w,
+        height: 228.h,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
         ),
         child: Column(
           children: [
             Container(
-              height: 124,
-              width: 137,
+              height: 124.h,
+              width: 137.w,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(story.imagePath),
@@ -110,7 +111,7 @@ class _StoryCard extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 11),
+            11.height,
             AppText(
               text: story.title,
               fontSize: 14,
@@ -121,7 +122,7 @@ class _StoryCard extends StatelessWidget {
               fontSize: 12,
               color: const Color(0xff7D848D),
             ),
-            const SizedBox(height: 11),
+            11.height,
             _WatchNowButton(),
           ],
         ),
@@ -134,10 +135,10 @@ class _WatchNowButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 22,
-      width: 96,
+      height: 22.h,
+      width: 96.w,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         color: const Color(0xffD9D9D9),
       ),
       child:  Center(
@@ -159,7 +160,7 @@ class _ActivitiesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
-        separatorBuilder: (context, index) => 16.ph(),
+        separatorBuilder: (context, index) => 16.height,
         itemCount: AppDummyData.activitiesData.length,
         itemBuilder: (context, index) => _ActivityCard(
           activity: AppDummyData.activitiesData[index],
@@ -196,18 +197,18 @@ class _ActivityCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
           color: Colors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
-              blurRadius: 10,
+              blurRadius: 10.r,
               spreadRadius: 0,
               offset: const Offset(0, 4),
             ),
           ],
         ),
-        height: 100,
+        height: 100.h,
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Row(
@@ -225,8 +226,8 @@ class _ActivityCard extends StatelessWidget {
               ),
               const Spacer(),
               Container(
-                height: 80,
-                width: 80,
+                height: 80.h,
+                width: 80.w,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(activity.imagePath),

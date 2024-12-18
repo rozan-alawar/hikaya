@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
@@ -27,17 +28,17 @@ class HomeView extends GetView<HomeController> {
             elevation: 0,
             leading: controller.currentIndex.value == 2
                 ? Padding(
-              padding: EdgeInsets.only(right: 10.0),
+              padding: EdgeInsets.only(right: 10.0.w),
               child: Container(
-                width: 40,
-                height: 40,
+                width: 40.w,
+                height: 40.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: appService.isDarkMode.value ? AppColors.flagBlack.withOpacity(0.8) : AppColors.white,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.16),
-                      blurRadius:12,
+                      blurRadius:12.r,
                       offset: const Offset(0, 2),
                     ),
                   ],
@@ -45,7 +46,7 @@ class HomeView extends GetView<HomeController> {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(20.r),
                     onTap:()=>Get.toNamed(Routes.NOTIFICATION),
                     child: Icon(
                       Icons.notifications_outlined,

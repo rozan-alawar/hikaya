@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
@@ -14,8 +15,8 @@ class CoursesView extends GetView<CoursesController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-        leading: BackButtonWidget(),
+      appBar: AppBar(
+        leading: const BackButtonWidget(),
         title: AppText(
           text: 'الكورسات',
           fontSize: 20,
@@ -40,25 +41,30 @@ class CoursesView extends GetView<CoursesController> {
             ),
             20.height,
             AppText(text: 'الكورسات', fontSize: 20),
-            22.ph(),
+            22.height,
             Expanded(
               child: ListView.separated(
                 shrinkWrap: true,
                 separatorBuilder: (context, index) => 10.height,
                 itemCount: AppDummyData.coursesData.length,
                 itemBuilder: (context, index) => SizedBox(
-                  height: 400,
+                  height: 400.h,
                   width: double.infinity,
                   child: GestureDetector(
                     onTap: () {
-                      controller.selectCourseModel(controller.courseModel.value[index]);
+                      controller.selectCourseModel(
+                          controller.courseModel.value[index]);
                     },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.asset(AppDummyData
-                            .coursesData[index].imageCoursePath,height: 250,width: double.infinity,fit: BoxFit.fill,),
-   11.ph(),
+                        Image.asset(
+                          AppDummyData.coursesData[index].imageCoursePath,
+                          height: 250.h,
+                          width: double.infinity.w,
+                          fit: BoxFit.fill,
+                        ),
+                        11.height,
                         Expanded(
                           child: Container(
                             // color: Colors.greenAccent,
@@ -69,29 +75,30 @@ class CoursesView extends GetView<CoursesController> {
                                     text:
                                         'اسم الكورس :${AppDummyData.coursesData[index].courseName}',
                                     fontSize: 18),
-
-      Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     AppText(
                                         text:
-                                        'عدد الفيديوهات : ${AppDummyData.coursesData[index].episodeModel.length}',
+                                            'عدد الفيديوهات : ${AppDummyData.coursesData[index].episodeModel.length}',
                                         fontSize: 18),
                                     AppText(
                                       text: 'الكورس مجاني بالكامل',
                                       fontSize: 15,
                                       color: Color(0xff7D848D),
-                                    ), ],
+                                    ),
+                                  ],
                                 )
                               ],
                             ),
                           ),
                         ),
-                          ],
+                      ],
                     ),
                   ),
                 ),
-                 ),
+              ),
             ),
           ],
         ),

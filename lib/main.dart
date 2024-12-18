@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/services/app_service.dart';
 import 'package:hikaya/app/core/utils/app_theme.dart';
@@ -32,27 +33,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appService = Get.find<AppService>();
-    return Obx(() => SafeArea(
-      child: GetMaterialApp(
-        title: 'حكاية',
-        debugShowCheckedModeBanner: false,
-        initialRoute: AppPages.INITIAL,
-        // initialRoute: Routes.SPLASH,
-        getPages: AppPages.routes,
-        locale: const Locale('ar'),
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: appService.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
-        // supportedLocales: AppLocalizations.supportedLocales,
-        localizationsDelegates: const [
-          // AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-          ),
-    ),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      // Use builder only if you need to use library outside ScreenUtilInit context
+      builder: (_ , child) {
+        return Obx(() => GetMaterialApp(
+          title: 'حكاية',
+          debugShowCheckedModeBanner: false,
+          initialRoute: AppPages.INITIAL,
+          // initialRoute: Routes.SPLASH,
+          getPages: AppPages.routes,
+          locale: const Locale('ar'),
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: appService.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
+          // supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: const [
+            // AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+        ));
+      },
     );
+
   }
 }
 

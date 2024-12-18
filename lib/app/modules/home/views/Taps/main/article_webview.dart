@@ -18,7 +18,12 @@ class _ArticleWebViewState extends State<ArticleWebView> {
   @override
   void initState() {
     super.initState();
-    final String url = Get.arguments['url'] as String;
+    String urlString = Get.arguments['url'] as String;
+    if (!urlString.startsWith('http://') && !urlString.startsWith('https://')) {
+      urlString = 'https://$urlString';
+    }
+    final String url =urlString ;
+    debugPrint('url $url');
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
@@ -46,7 +51,7 @@ class _ArticleWebViewState extends State<ArticleWebView> {
         elevation: 0,
         title: const CustomText(
           'المقال',
-          fontSize: 20,
+          fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
         centerTitle: true,

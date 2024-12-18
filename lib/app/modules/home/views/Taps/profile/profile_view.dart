@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
@@ -21,13 +22,13 @@ class ProfileView extends GetView<HomeController> {
             10.height,
             Center(
               child: Container(
-                width: 85,
-                height: 85,
+                width: 85.w,
+                height: 85.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: AppColors.primary,
-                    width: 2,
+                    width: 2.w,
                   ),
                 ),
                 child: const Center(

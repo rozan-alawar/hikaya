@@ -43,7 +43,7 @@ class LoginView extends GetView<AuthController> {
                     fontSize: 16,
                     color: AppColors.textLight,
                   ),
-                  const SizedBox(height: 32),
+                  32.height,
                   CustomTextField(
                     hintText: 'البريد الإلكتروني',
                     controller: emailController,
@@ -53,7 +53,7 @@ class LoginView extends GetView<AuthController> {
 
                     },
                   ),
-                  const SizedBox(height: 16),
+                  16.height,
                   Obx(
                     () => CustomTextField(
 

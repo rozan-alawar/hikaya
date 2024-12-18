@@ -24,8 +24,6 @@ class MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appService = Get.find<AppService>();
-
     return ListTile(
       onTap: onTap,
       leading: Icon(

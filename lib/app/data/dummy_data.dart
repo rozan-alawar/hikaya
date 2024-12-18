@@ -25,7 +25,7 @@ class AppDummyData{
  static List<HomeModel> HomeData=[
    HomeModel(imagePath: 'assets/images/art1.png', title:'كيف أتحدث لطفلي عن فلسطين؟',by: 'بقلم: ',date: '25 مايو, 2021',url: 'https://bit.ly/3YWMmRL'),
    HomeModel(imagePath: 'assets/images/art2.png', title:'كيف نرسخ عقيدة أبنائنا حول فلسطين؟',by: 'بقلم: ',date: '25 مايو, 2021',url: 'https://bit.ly/4fQ5doo'),
-   HomeModel(imagePath: 'assets/images/art3.png', title:'طرق تنشئ بها طفلك على حب فلسطين',by: 'بقلم: ',date: '25 مايو, 2021',url: 'http://bit.ly/40UCScd'),
+   HomeModel(imagePath: 'assets/images/art3.png', title:'طرق تنشئ بها طفلك على حب فلسطين',by: 'بقلم: ',date: '25 مايو, 2021',url: 'https://bit.ly/40UCScd'),
 
  ];
 

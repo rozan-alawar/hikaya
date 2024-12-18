@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/services/app_service.dart';
@@ -18,10 +19,10 @@ class AboutView extends StatelessWidget{
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: CustomText(
+        title: const CustomText(
           alignment: Alignment.center,
           'عن التطبيق',
-          fontSize: 20,
+          fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
         // centerTitle: true,
@@ -38,7 +39,7 @@ class AboutView extends StatelessWidget{
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: appService.isDarkMode.value ? AppColors.white.withOpacity(.1) : AppColors.flagBlack.withOpacity(.1) ,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(16.r),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.05),
@@ -56,14 +57,14 @@ class AboutView extends StatelessWidget{
                 maxLines: 500,
               ),
             ),
-            const SizedBox(height: 20),
+            20.height,
             // You can add more sections here like version info, developer info, etc.
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: appService.isDarkMode.value ? AppColors.white.withOpacity(.1) : AppColors.flagBlack.withOpacity(.1) ,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(16.r),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.05),
@@ -81,7 +82,7 @@ class AboutView extends StatelessWidget{
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
-                  const SizedBox(height: 8),
+                  8.height,
                   CustomText(
                      '1.0.0',
                     fontSize: 14,

@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
 import 'package:hikaya/app/core/utils/lunch_urls.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
@@ -19,7 +21,7 @@ class CourseDetailsView extends GetView<CourseDetailsController> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+            padding:  EdgeInsets.symmetric(vertical: 20.h, horizontal: 24.w),
             child: CourseContent(
               courseModel: courseModel,
               controller: controller,
@@ -47,13 +49,13 @@ class CourseContent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const BackButton(),
-        16.ph(),
+        16.height,
         const CourseHeader(),
-        16.ph(),
+        16.height,
         CourseInfo(courseModel: courseModel),
-        27.ph(),
+        27.height,
         CourseTabButtons(controller: controller),
-        18.ph(),
+        18.height,
         CourseTabContent(
           courseModel: courseModel,
           controller: controller,
@@ -87,7 +89,7 @@ class CourseHeader extends GetView<CourseDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => GestureDetector(onTap: ()async =>await URLLauncherUtil.launchURL(controller.linkOfVideo.value),child: Container(
-      height: 189,
+      height: 189.h,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -121,7 +123,7 @@ class CourseInfo extends StatelessWidget {
           text: 'اسم الكورس: ${courseModel.courseName}',
           fontSize: 18,
         ),
-        8.ph(),
+        8.height,
         AppText(
           text: 'عدد الفيديوهات: ${courseModel.episodeModel.length}',
           fontSize: 18,
@@ -150,7 +152,7 @@ class CourseTabButtons extends StatelessWidget {
             onPressed: () => controller.setTabIndex(0),
           ),
         ),
-        8.pw(),
+        8.width,
         Expanded(
           child: TabButton(
             title: 'الحلقات',
@@ -178,7 +180,7 @@ class TabButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 40.h,
       child: ElevatedButton(
         onPressed: onPressed,
         style: _buildButtonStyle(),
@@ -222,9 +224,9 @@ class CourseTabContent extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(31),
+        borderRadius: BorderRadius.circular(31.r),
       ),
-      height: 269,
+      height: 269.h,
       child: _buildContent(),
     ),);
   }
@@ -270,7 +272,7 @@ class EpisodesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CourseDetailsController>(builder: (controller) => ListView.separated(
       itemCount: courseModel.episodeModel.length,
-      separatorBuilder: (_, __) => 14.ph(),
+      separatorBuilder: (_, __) => 14.height,
       itemBuilder: (_, index) {
         return EpisodeItem(
           episode: courseModel.episodeModel[index],
@@ -305,8 +307,8 @@ class EpisodeItem extends StatelessWidget {
     return   InkWell(
       onTap: onTap,
       child: Container(
-        height: 37,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        height: 37.h,
+        padding:  EdgeInsets.symmetric(horizontal: 16.w),
         decoration: _buildDecoration(),
         child: Row(
           children: [
@@ -314,7 +316,7 @@ class EpisodeItem extends StatelessWidget {
               Icons.play_circle,
               color: isSelected ? const Color(0xff1E6C41) : Colors.black,
             ),
-            10.pw(),
+            10.width,
             _buildEpisodeInfo(),
           ],
         ),
@@ -327,7 +329,7 @@ class EpisodeItem extends StatelessWidget {
       border: Border.all(
         color: isSelected ? const Color(0xff1E6C41) : Colors.grey.shade300,
       ),
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(20.r),
       color: isSelected ? const Color(0xff1E6C41).withOpacity(0.1) : Colors.white,
     );
   }

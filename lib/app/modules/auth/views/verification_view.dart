@@ -1,5 +1,6 @@
 // verification_view.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
@@ -42,7 +43,7 @@ class VerificationView extends GetView<AuthController> {
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
             ),
-            const SizedBox(height: 8),
+            8.height,
             CustomText(
               alignment: Alignment.center   ,
               'يرجى التحقق من بريدك الإلكتروني ... لرؤية رمز التحقق',
@@ -65,14 +66,14 @@ class VerificationView extends GetView<AuthController> {
               children: List.generate(
                 4,
                     (index) => SizedBox(
-                  width: 80,
+                  width: 80.w,
                   child: TextFormField(
                     controller: otpControllers[index],
                     focusNode: focusNodes[index],
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,
                     maxLength: 1,
-                    style: const TextStyle(fontSize: 24),
+                    style:  TextStyle(fontSize: 24.sp),
                     decoration: InputDecoration(
                       counterText: "",
                       filled: true,
@@ -98,10 +99,10 @@ class VerificationView extends GetView<AuthController> {
                 ),
               ),
             ),
-            const SizedBox(height: 32),
+            32.height,
             SizedBox(
               width: double.infinity,
-              height: 50,
+              height: 50.h,
               child: Obx(
                     () => CustomButton(
                   onPressed: controller.isLoading.value
@@ -112,26 +113,26 @@ class VerificationView extends GetView<AuthController> {
                   },
                   widget: controller.isLoading.value
                       ? const CircularProgressIndicator(color: Colors.white)
-                      : const Text(
+                      :  Text(
                     'تحقق',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 18.sp,
                     ),
                   ),
                   backgraoundColor: AppColors.primary,
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            16.height,
             Center(
               child: TextButton(
                 onPressed: () => controller.resendVerificationCode(),
-                child: const Text(
+                child:  Text(
                   'إعادة إرسال الرمز',
                   style: TextStyle(
                     color: Colors.green,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                   ),
                 ),
               ),

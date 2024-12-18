@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/services/app_service.dart';
@@ -19,13 +20,13 @@ class NotificationView extends GetView<NotificationController> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: CustomText(
+        title: const CustomText(
           alignment: Alignment.center,
           'الإشعارات',
-          fontSize: 20,
+          fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
-        leading: BackButtonWidget(),
+        leading: const BackButtonWidget(),
         actions: [
           Obx(
           () =>
@@ -37,7 +38,7 @@ class NotificationView extends GetView<NotificationController> {
               fontSize: 20,
               color: appService.isDarkMode.value ? AppColors.flagGreen : AppColors.primary
             ),
-          ):SizedBox(width: 50,),
+          ):50.width,
           ),
         ],
       ),
@@ -71,13 +72,13 @@ class NotificationView extends GetView<NotificationController> {
                     ? Colors.grey[600]
                     : Colors.grey[400],
               ),
-              const SizedBox(height: 16),
+                          16.height,
 
                         ],
                       ),
             )
             : Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+              padding:  EdgeInsets.only(top: 20.0.h),
               child: ListView.builder(
                         itemCount: controller.notifications.length,
                         itemBuilder: (context, index) {
