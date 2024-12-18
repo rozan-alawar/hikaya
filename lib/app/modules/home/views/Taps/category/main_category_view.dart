@@ -13,37 +13,35 @@ import 'package:hikaya/app/routes/app_pages.dart';
 class MainCategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-40.height,              Expanded(
-                child: ListView.separated(
-                  itemBuilder: (context, index) => HomeCategoryWidget(
-                    image: AppDummyData.categoryHomeData[index].image,
-                    title: AppDummyData.categoryHomeData[index].title,
-                    onTap: () {
-                      switch (index) {
-                        case 0:
-                          Get.toNamed(Routes.COURSES);
-                          break;
-                        case 1:
-                          Get.toNamed(Routes.ACTIVITIESANDSTORY);
-                          break;
-                        case 2:
-                          Get.toNamed(Routes.GAME);
-                          break;
-                      }
-                    },
-                  ),
-                  separatorBuilder: (context, index) =>40.height,
-                  itemCount: AppDummyData.categoryHomeData.length,
-                ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+    40.height,              Expanded(
+            child: ListView.separated(
+              itemBuilder: (context, index) => HomeCategoryWidget(
+                image: AppDummyData.categoryHomeData[index].image,
+                title: AppDummyData.categoryHomeData[index].title,
+                onTap: () {
+                  switch (index) {
+                    case 0:
+                      Get.toNamed(Routes.COURSES);
+                      break;
+                    case 1:
+                      Get.toNamed(Routes.ACTIVITIESANDSTORY);
+                      break;
+                    case 2:
+                      Get.toNamed(Routes.GAME);
+                      break;
+                  }
+                },
               ),
-            ],
+              separatorBuilder: (context, index) =>25.height,
+              itemCount: AppDummyData.categoryHomeData.length,
+            ),
           ),
-        ),
+        ],
+      ),
     );
   }
 }
@@ -88,13 +86,12 @@ class HomeCategoryWidget extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            // Green overlay at the bottom
             Positioned(
               bottom: 0,
               left: 0,
               right: 0,
               child: Container(
-                height: 50,
+                height: 40,
                 decoration: const BoxDecoration(
                   color: AppColors.primary,
                   borderRadius: BorderRadius.only(
@@ -105,7 +102,7 @@ class HomeCategoryWidget extends StatelessWidget {
                 child: CustomText(
                   title,
                   alignment: Alignment.center,
-                  fontSize: 20,
+                  fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),

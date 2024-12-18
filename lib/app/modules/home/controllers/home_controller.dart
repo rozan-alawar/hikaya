@@ -4,6 +4,7 @@ import 'package:hikaya/app/core/services/app_service.dart';
 import 'package:hikaya/app/core/utils/app_theme.dart';
 import 'package:hikaya/app/core/widgets/custom_snackbar.dart';
 import 'package:hikaya/app/modules/auth/controllers/auth_controller.dart';
+import 'package:hikaya/app/routes/app_pages.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -11,6 +12,7 @@ class HomeController extends GetxController {
   final RxInt currentIndex = 2.obs;
   User? user = FirebaseAuth.instance.currentUser;
   final appService = Get.find<AppService>();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   void toggleTheme(bool value) async {
     await appService.saveThemeMode(value);
@@ -35,11 +37,12 @@ class HomeController extends GetxController {
         return '';
     }
   }
-  
+
   Future<void> signOut() async {
     try {
-      await Get.find<AuthController>().signOut();
-      Get.offAllNamed('/auth');
+      await _auth.signOut();
+      print('done');
+      Get.offAllNamed(Routes.AUTH);
     } catch (e) {
       CustomSnackBar.showCustomErrorSnackBar(
         title: 'خطأ',

@@ -196,7 +196,10 @@ class AuthController extends GetxController {
 
   Future<void> signOut() async {
     try {
+
     await _auth.signOut();
+    print('done');
+    Get.offAllNamed(Routes.AUTH);
    } catch (e) {
       CustomSnackBar.showCustomErrorSnackBar(
         title: 'خطأ',

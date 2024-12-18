@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/services/app_service.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
+import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/core/widgets/back_button.dart';
 import 'package:hikaya/app/core/widgets/custom_text.dart';
 
@@ -18,12 +19,13 @@ class AboutView extends StatelessWidget{
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: CustomText(
-          alignment: Alignment.center,
-          'عن التطبيق',
-          fontSize: 20,
+        title: AppText(
+text:           'عن التطبيق',
+          fontSize: 22,
           fontWeight: FontWeight.bold,
+
         ),
+        toolbarHeight: 70,
         // centerTitle: true,
         leading: BackButtonWidget(),
         actions: [60.width],
@@ -37,11 +39,11 @@ class AboutView extends StatelessWidget{
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: appService.isDarkMode.value ? AppColors.white.withOpacity(.1) : AppColors.flagBlack.withOpacity(.1) ,
+                color: appService.isDarkMode.value ? AppColors.flagBlack : AppColors.white ,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withOpacity(0.16),
                     blurRadius: 10,
                     spreadRadius: 0,
                     offset: const Offset(0, 4),
@@ -50,8 +52,8 @@ class AboutView extends StatelessWidget{
               ),
               child: CustomText(
                  '"حكاية" تطبيق جوال مصمم كدليل شامل للآباء والأمهات لتعليم أبنائهم عن القضية الفلسطينية. يجمع التطبيق محتوى متنوعاً، بما في ذلك المقالات والدورات المتسلسلة والقصص المختارة والأنشطة الإبداعية والألعاب التعليمية. وهو مصمم خصيصاً لفئات عمرية مختلفة ويهدف إلى \nتعزيز الوعي والتعاطف والهوية الثقافية من خلال معايير تجزئة الموارد وتقديمها في شكل منظم وسهل الاستخدام. يوفر "حكاية" للآباء والأمهات أداة عملية لتعزيز فهم أبنائهم لهذه القضية الحيوية.',
-                fontSize: 20,
-                height: 1.8,
+                fontSize: 16,
+                height: 2,
                 textAlign: TextAlign.justify,
                 maxLines: 500,
               ),
@@ -62,11 +64,11 @@ class AboutView extends StatelessWidget{
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: appService.isDarkMode.value ? AppColors.white.withOpacity(.1) : AppColors.flagBlack.withOpacity(.1) ,
+                color: appService.isDarkMode.value ? AppColors.flagBlack : AppColors.white ,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withOpacity(0.16),
                     blurRadius: 10,
                     spreadRadius: 0,
                     offset: const Offset(0, 4),

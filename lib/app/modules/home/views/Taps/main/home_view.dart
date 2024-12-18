@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 url: AppDummyData.HomeData[index].url,
                 date: AppDummyData.HomeData[index].date,
               ),
-              separatorBuilder: (context, index) => 30.height,
+              separatorBuilder: (context, index) => 20.height,
               itemCount: AppDummyData.HomeData.length,
             ),
           ],
@@ -90,8 +90,8 @@ class HomeWidget extends StatelessWidget {
           debugPrint((await ConnectivityService.to.checkConnection()).toString());
            if (!await ConnectivityService.to.checkConnection()) {
           SnackbarUtil.showError(
-          'No Internet Connection',
-          'Please check your network connection and try again.'
+          'لا يوجد اتصال بالانترنت',
+          'يرجى التأكد من الاتصال بالانترنت والمحاولة مرة أخرى'
           );
           return;
           }

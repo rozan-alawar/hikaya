@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hikaya/app/core/extensions/empty_space_extension.dart';
 import 'package:hikaya/app/core/extensions/validation.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
+import 'package:hikaya/app/core/widgets/back_button.dart';
 import 'package:hikaya/app/core/widgets/custom_button.dart';
 import 'package:hikaya/app/core/widgets/custom_text.dart';
 import 'package:hikaya/app/core/widgets/custom_textfiled.dart';
@@ -21,12 +22,10 @@ class ForgotPasswordView extends GetView<AuthController> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
+          toolbarHeight: 70,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Get.back(),
-          ),
+          leading:BackButtonWidget(),
         ),
         body: SafeArea(
           child: Padding(

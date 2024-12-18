@@ -33,14 +33,12 @@ class BackButtonWidget extends StatelessWidget {
             ),
           ],
         ),
-        child: Material(
+        child: GestureDetector(
+          onTap: onPressed ?? () => Get.back(),child:  Material(
           color: Colors.transparent,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(20),
-            onTap: onPressed ?? () => Get.back(),
             child: Icon(
               Icons.arrow_back_ios_new,
-              color: iconColor ?? Colors.black,
+              color: iconColor ?? (appService.isDarkMode.value ? AppColors.white: AppColors.flagBlack),
               size: 20,
             ),
           ),

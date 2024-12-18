@@ -5,6 +5,7 @@ import 'package:hikaya/app/core/extensions/sized_box_extension.dart';
 import 'package:hikaya/app/core/utils/app_colors.dart';
 import 'package:hikaya/app/core/widgets/app_text.dart';
 import 'package:hikaya/app/core/widgets/back_button.dart';
+import 'package:hikaya/app/core/widgets/custom_text.dart';
 
 import '../controllers/activities_and_story_controller.dart';
 
@@ -15,7 +16,9 @@ class GameView extends GetView<ActivitiesAndStoryController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 70,
         leading: BackButtonWidget(),
+        title:AppText(text: 'لعبة التغريبة',fontSize: 24,) ,
       ),
       body: SafeArea(
         child: Padding(
